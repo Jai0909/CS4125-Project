@@ -1,5 +1,5 @@
 package com.kiss.carrentalsystem;
 
-public class login {
-
+public class logingetters {
+    
 }
