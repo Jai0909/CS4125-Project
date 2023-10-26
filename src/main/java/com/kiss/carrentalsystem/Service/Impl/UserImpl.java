@@ -6,10 +6,8 @@ import com.kiss.carrentalsystem.Repo.UserRepo;
 import com.kiss.carrentalsystem.Service.UserService;
 import com.kiss.carrentalsystem.response.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
 import java.util.Optional;
 @Service
 public class UserImpl implements UserService {
@@ -33,7 +31,6 @@ public class UserImpl implements UserService {
     UserDTO userDTO;
     @Override
     public LoginResponse  loginUser(LoginDTO loginDTO) {
-        String msg = "";
         User user1 = userRepo.findByEmail(loginDTO.getEmail());
         if (user1 != null) {
             String password = loginDTO.getPassword();
