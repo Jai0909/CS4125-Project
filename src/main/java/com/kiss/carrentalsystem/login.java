@@ -10,17 +10,17 @@ public class login {
     }
 
     private void initializeDB(){
-        final String JDBC_DRIVER="com.mysql.cj.jdbc.Driver"; //replace w our driver
+        final String JDBC_DRIVER="com.mysql.cj.jdbc.Driver";
         final String DB_URL="jdbc:mysql://localhost:3306";
         String EMAIL="";
         String PASSWORD="";
 
         try {
             Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL, "email", "password"); //did you use email and password as table headers?
+            conn = DriverManager.getConnection(DB_URL, "email", "password");
             stmt = conn.createStatement();
 
-            String query = "SELECT * email, password FROM Account"; // add example@gmail.com to db to test
+            String query = "SELECT * email, password FROM Account WHERE email = 'example@gmail.com'";
             ResultSet resultSet = stmt.executeQuery(query);
 
             if (resultSet.next()) {
