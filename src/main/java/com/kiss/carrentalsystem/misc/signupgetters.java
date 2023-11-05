@@ -1,4 +1,4 @@
-package com.kiss.carrentalsystem;
+package com.kiss.carrentalsystem.misc;
 
 public class signupgetters {
     String name;
