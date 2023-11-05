@@ -1,4 +1,4 @@
-package com.kiss.carrentalsystem.Dto;
+package com.kiss.carrentalsystem.dto;
 
 import java.util.Date;
 
