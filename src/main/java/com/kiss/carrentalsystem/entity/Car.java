@@ -1,4 +1,4 @@
-package com.kiss.carrentalsystem.Entity;
+package com.kiss.carrentalsystem.entity;
 import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.*;
