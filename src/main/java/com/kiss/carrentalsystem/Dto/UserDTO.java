@@ -1,23 +1,43 @@
 package com.kiss.carrentalsystem.Dto;
 
+import java.util.Date;
+
 public class UserDTO {
     private String email;
     private String name;
     private String password;
     private String phoneno;
-    private String gender;
     private String address;
+    private int userMilage;
+    private Date dateOfBirth;
 
     public UserDTO() {
     }
 
-    public UserDTO(String email, String name, String password, String phoneno, String gender, String address) {
+    public UserDTO(String email, String name, String password, String phoneno, String address, int userMilage, Date dateOfBirth) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.phoneno = phoneno;
-        this.gender = gender;
         this.address = address;
+        this.userMilage = userMilage;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public int getUserMilage() {
+        return userMilage;
+    }
+
+    public void setUserMilage(int userMilage) {
+        this.userMilage = userMilage;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getEmail() {
@@ -50,14 +70,6 @@ public class UserDTO {
 
     public void setPhoneno(String phoneno) {
         this.phoneno = phoneno;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getAddress() {
