@@ -1,4 +1,4 @@
-package com.kiss.carrentalsystem;
+package com.kiss.carrentalsystem.misc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
