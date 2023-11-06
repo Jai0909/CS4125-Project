@@ -8,8 +8,8 @@ public class Car {
     @Id
     @Column(name="makeAndModel", length = 255) //todo adjust names and lengths to fit
     private String makeAndModel;
-    @Column(name="lisencePlate", length = 255)
-    private String lisencePlate;
+    @Column(name="licencePlate", length = 255)
+    private String licencePlate;
     @Column(name="milage", length = 255)
     private int milage;
     @Column(name="vehicleType", length = 255)
@@ -23,9 +23,9 @@ public class Car {
     public Car() {
     }
 
-    public Car(String makeAndModel, String lisencePlate, int milage, String vehicleType, boolean damaged, float basePrice) {
+    public Car(String makeAndModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice) {
         this.makeAndModel = makeAndModel;
-        this.lisencePlate = lisencePlate;
+        this.licencePlate = licencePlate;
         this.milage = milage;
         this.vehicleType = vehicleType;
         this.damaged = damaged;
@@ -40,12 +40,12 @@ public class Car {
         this.makeAndModel = makeAndModel;
     }
 
-    public String getLisencePlate() {
-        return lisencePlate;
+    public String getLicencePlate() {
+        return licencePlate;
     }
 
-    public void setLisencePlate(String lisencePlate) {
-        this.lisencePlate = lisencePlate;
+    public void setLicencePlate(String licencePlate) {
+        this.licencePlate = licencePlate;
     }
 
     public int getMilage() {
