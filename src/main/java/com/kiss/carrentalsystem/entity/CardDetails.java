@@ -16,6 +16,8 @@ public class CardDetails {
     private int expirationDay;
     @Column(name="cvc", length = 3)
     private int cvc;
+    @jakarta.persistence.Id
+    private Long id;
 
 
     public CardDetails() {
@@ -67,5 +69,13 @@ public class CardDetails {
 
     public void setCvc(int cvc) {
         this.cvc = cvc;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

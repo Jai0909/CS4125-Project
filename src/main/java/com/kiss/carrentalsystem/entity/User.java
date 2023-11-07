@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="user")
+@Table(name="User")
 public class User {
     @Id
     @Column(name="email", length = 255)
@@ -23,6 +23,8 @@ public class User {
     private int userMilage;
     @Column(name="dateOfBirth")
     private Date dateOfBirth;
+    @jakarta.persistence.Id
+    private Long id;
 
     public User(String email, String name, String password, String phoneno, String address, int userMilage, Date dateOfBirth) {
         this.email = email;
@@ -93,6 +95,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
 

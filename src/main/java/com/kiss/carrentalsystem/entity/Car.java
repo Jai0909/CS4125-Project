@@ -3,7 +3,7 @@ import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name="car") //todo check table name
+@Table(name="Car") //todo check table name
 public class Car {
     @Id
     @Column(name="makeAndModel", length = 255) //todo adjust names and lengths to fit
@@ -20,6 +20,8 @@ public class Car {
     private float basePrice;
     @Column(name="availability", length = 255)
     private boolean availability;
+    @jakarta.persistence.Id
+    private Long id;
 
 
     public Car() {
@@ -89,5 +91,13 @@ public class Car {
 
     public void setAvailability(boolean availability) {
         this.availability = availability;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
