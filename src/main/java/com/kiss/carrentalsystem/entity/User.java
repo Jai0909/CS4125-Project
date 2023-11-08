@@ -1,5 +1,4 @@
 package com.kiss.carrentalsystem.entity;
-import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.*;
 
@@ -19,14 +18,12 @@ public class User {
     private String phoneno;
     @Column(name="address", length = 255)
     private String address;
-    @Column(name="userMilage")
+    @Column(name="user_milage")
     private int userMilage;
-    @Column(name="dateOfBirth")
-    private Date dateOfBirth;
-    @jakarta.persistence.Id
-    private Long id;
+    @Column(name="date_of_birth")
+    private String dateOfBirth;
 
-    public User(String email, String name, String password, String phoneno, String address, int userMilage, Date dateOfBirth) {
+    public User(String email, String name, String password, String phoneno, String address, int userMilage, String dateOfBirth) {
         this.email = email;
         this.name = name;
         this.password = password;
@@ -47,11 +44,11 @@ public class User {
         this.userMilage = userMilage;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -95,14 +92,6 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
     }
 }
 

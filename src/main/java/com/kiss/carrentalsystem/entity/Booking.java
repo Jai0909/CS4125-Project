@@ -1,5 +1,4 @@
 package com.kiss.carrentalsystem.entity;
-import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.*;
 
@@ -9,18 +8,26 @@ import java.util.Date;
 @Table(name="Booking") //todo check table name
 public class Booking {
     @Id
-    @Column(name = "car", length = 255) //todo adjust names and lengths to fit
+    @Column(name = "reg_no", length = 255) //todo adjust names and lengths to fit
     private String car;
-    @Column(name = "user", length = 255)
+    @Column(name = "email", length = 255)
     private String user;
-    @Column(name = "bookingStartDate", length = 255)
+    @Column(name = "booking_id", length = 255)
+    private String booking_id;
+    @Column(name = "start_date", length = 255)
     private Date bookingStartDate;
-    @Column(name = "bookingEndDate", length = 255)
+    @Column(name = "end_date", length = 255)
     private Date bookingEndDate;
-    @jakarta.persistence.Id
-    private Long id;
 
     public Booking() {
+    }
+
+    public Booking(String car, String user, String booking_id, Date bookingStartDate, Date bookingEndDate) {
+        this.car = car;
+        this.user = user;
+        this.booking_id = booking_id;
+        this.bookingStartDate = bookingStartDate;
+        this.bookingEndDate = bookingEndDate;
     }
 
     public Booking(String car, String user, Date bookingStartDate, Date bookingEndDate) {
@@ -62,11 +69,11 @@ public class Booking {
         this.bookingEndDate = bookingEndDate;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getBooking_id() {
+        return booking_id;
     }
 
-    public Long getId() {
-        return id;
+    public void setBooking_id(String booking_id) {
+        this.booking_id = booking_id;
     }
 }

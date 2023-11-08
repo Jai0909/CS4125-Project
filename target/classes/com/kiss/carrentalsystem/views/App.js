@@ -1,8 +1,8 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import Register from "./compontents/Register";
-import Login from "./compontents/Login";
+import Register from "./Register";
+import Login from "./Login";
 
-import Home from "./compontents/Home";
+import Home from "./Home";
 
 
 function App() {

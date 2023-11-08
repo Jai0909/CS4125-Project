@@ -1,33 +1,30 @@
 package com.kiss.carrentalsystem.entity;
-import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name="cardDetails") //todo check table name
+@Table(name="Payment") //todo check table name
 public class CardDetails {
     @Id
-    @Column(name="cardNumber", length = 16) //todo adjust names and lengths to fit
+    @Column(name="card_no", length = 16) //todo adjust names and lengths to fit
     private int cardNumber;
-    @Column(name="cardHolder", length = 255)
+    @Column(name="card_holder", length = 255)
     private String cardHolder;
-    @Column(name="expirationMonth", length = 2)
+    @Column(name="exp_month", length = 2)
     private int expirationMonth;
-    @Column(name="expirationDay", length = 2)
-    private int expirationDay;
-    @Column(name="cvc", length = 3)
+    @Column(name="exp_year", length = 2)
+    private int expirationYear;
+    @Column(name="cvv", length = 3)
     private int cvc;
-    @jakarta.persistence.Id
-    private Long id;
 
 
     public CardDetails() {
     }
 
-    public CardDetails(int cardNumber, String cardHolder, int expirationMonth, int expirationDay, int cvc) {
+    public CardDetails(int cardNumber, String cardHolder, int expirationMonth, int expirationYear, int cvc) {
         this.cardNumber = cardNumber;
         this.cardHolder = cardHolder;
         this.expirationMonth = expirationMonth;
-        this.expirationDay = expirationDay;
+        this.expirationYear = expirationYear;
         this.cvc = cvc;
     }
 
@@ -55,12 +52,12 @@ public class CardDetails {
         this.expirationMonth = expirationMonth;
     }
 
-    public int getExpirationDay() {
-        return expirationDay;
+    public int getExpirationYear() {
+        return expirationYear;
     }
 
-    public void setExpirationDay(int expirationDay) {
-        this.expirationDay = expirationDay;
+    public void setExpirationYear(int expirationYear) {
+        this.expirationYear = expirationYear;
     }
 
     public int getCvc() {
@@ -69,13 +66,5 @@ public class CardDetails {
 
     public void setCvc(int cvc) {
         this.cvc = cvc;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
     }
 }
