@@ -3,6 +3,7 @@ import com.kiss.carrentalsystem.dto.UserDTO;
 import com.kiss.carrentalsystem.dto.LoginDTO;
 import com.kiss.carrentalsystem.entity.User;
 import com.kiss.carrentalsystem.repo.UserRepo;
+import com.kiss.carrentalsystem.response.CarResponse;
 import com.kiss.carrentalsystem.response.UserResponse;
 import com.kiss.carrentalsystem.service.UserService;
 import com.kiss.carrentalsystem.response.LoginResponse;
@@ -17,7 +18,7 @@ public class UserImpl implements UserService {
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
     @Override
-    public String addUser(UserDTO userDTO) {
+    public UserResponse addUser(UserDTO userDTO) {
         User user = new User(
                 userDTO.getEmail(),
                 userDTO.getName(),
@@ -29,7 +30,7 @@ public class UserImpl implements UserService {
                 userDTO.getDateOfBirth()
         );
         userRepo.save(user);
-        return user.getName();
+        return new UserResponse("User added Successfully", true);
     }
     @Override
     public LoginResponse  loginUser(LoginDTO loginDTO) {
