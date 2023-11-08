@@ -31,9 +31,9 @@ public class UserController {
             return ResponseEntity.ok(loginResponse);
         }
 
-        @PostMapping(path = "/updateName")
-        public ResponseEntity<?> updateName(@RequestBody UserDTO userDTO, String input) {
-            UserResponse userResponse = userService.updateName(userDTO, input);
+        @PatchMapping(path = "/updateName/{email}")
+        public ResponseEntity<?> updateName(@RequestBody UserDTO userDTO, @PathVariable String email) {
+            UserResponse userResponse = userService.updateName(userDTO, email);
             return ResponseEntity.ok(userResponse);
         }
     }

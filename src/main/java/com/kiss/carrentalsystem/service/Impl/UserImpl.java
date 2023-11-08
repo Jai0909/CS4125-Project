@@ -56,10 +56,10 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public UserResponse updateName(UserDTO userDTO, String input){
-        User user2 = userRepo.findByEmail(userDTO.getEmail());
+    public UserResponse updateName(UserDTO userDTO, String email){
+        User user2 = userRepo.findByEmail(email);
         if (user2 != null){
-            user2.setName(input); //to be fixed
+            user2.setName(userDTO.getName());
             userRepo.save(user2);
             return new UserResponse("Name change successful", true);
         }
