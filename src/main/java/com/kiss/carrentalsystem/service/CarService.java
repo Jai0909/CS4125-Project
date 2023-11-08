@@ -4,7 +4,7 @@ import com.kiss.carrentalsystem.dto.CarDTO;
 import com.kiss.carrentalsystem.response.CarResponse;
 
 public interface CarService {
-    String addCar(CarDTO carDTO);
+    CarResponse addCar(CarDTO carDTO);
 
     CarResponse deleteCar(CarDTO carDTO);
 }

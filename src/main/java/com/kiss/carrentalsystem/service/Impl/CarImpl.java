@@ -18,7 +18,7 @@ public class CarImpl implements CarService {
     private CarRepo carRepo;
 
     @Override
-    public String addCar(CarDTO carDTO) {
+    public CarResponse addCar(CarDTO carDTO) {
         Car car1 = new Car(carDTO.getMakeAndModel(),
                 carDTO.getLicencePlate(),
                 carDTO.getMilage(),
@@ -28,7 +28,7 @@ public class CarImpl implements CarService {
                 carDTO.isAvailability()
         );
         carRepo.save(car1);
-        return car1.getLicencePlate();
+        return new CarResponse("Car added Successfully", true);
     }
 
     @Override
