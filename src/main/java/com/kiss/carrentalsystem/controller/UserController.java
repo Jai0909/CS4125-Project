@@ -20,7 +20,7 @@ public class UserController {
         @Autowired
         private UserService userService;
         @PostMapping(path = "/save")
-        public String saveUser(@RequestBody UserDTO userDTO)
+        public UserResponse saveUser(@RequestBody UserDTO userDTO)
         {
             return userService.addUser(userDTO);
         }
