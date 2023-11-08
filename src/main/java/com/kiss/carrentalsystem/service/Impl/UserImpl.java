@@ -31,7 +31,6 @@ public class UserImpl implements UserService {
         userRepo.save(user);
         return user.getName();
     }
-    UserDTO userDTO;
     @Override
     public LoginResponse  loginUser(LoginDTO loginDTO) {
         User user1 = userRepo.findByEmail(loginDTO.getEmail());
@@ -57,10 +56,10 @@ public class UserImpl implements UserService {
 
     @Override
     public UserResponse updateName(UserDTO userDTO, String input){
-        User user1 = userRepo.findByEmail(userDTO.getEmail());
-        if (user1 != null){
-            user1.setName(input); //to be fixed
-            userRepo.save(user1);
+        User user2 = userRepo.findByEmail(userDTO.getEmail());
+        if (user2 != null){
+            user2.setName(input); //to be fixed
+            userRepo.save(user2);
             return new UserResponse("Name change successful", true);
         }
         return new UserResponse("Name change failed", false);
