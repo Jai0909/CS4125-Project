@@ -25,16 +25,9 @@ public class Booking {
     public Booking(String car, String user, String booking_id, Date bookingStartDate, Date bookingEndDate) {
         this.car = car;
         this.user = user;
+        this.bookingStartDate = bookingStartDate;
+        this.bookingEndDate = bookingEndDate;
         this.booking_id = booking_id;
-        this.bookingStartDate = bookingStartDate;
-        this.bookingEndDate = bookingEndDate;
-    }
-
-    public Booking(String car, String user, Date bookingStartDate, Date bookingEndDate) {
-        this.car = car;
-        this.user = user;
-        this.bookingStartDate = bookingStartDate;
-        this.bookingEndDate = bookingEndDate;
     }
 
     public String getCar() {

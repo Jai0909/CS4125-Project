@@ -1,40 +1,39 @@
 package com.kiss.carrentalsystem.dto;
-
-import com.kiss.carrentalsystem.entity.Car;
-import com.kiss.carrentalsystem.entity.User;
 import jakarta.persistence.Column;
 
 import java.util.Date;
 
 public class BookingDTO {
-    private Car car;
-    private User user;
+    private String car;
+    private String user;
     private Date bookingStartDate;
     private Date bookingEndDate;
+    private String booking_id;
 
     public BookingDTO() {
     }
 
-    public BookingDTO(Car car, User user, Date bookingStartDate, Date bookingEndDate) {
+    public BookingDTO(String car, String user, String booking_id, Date bookingStartDate, Date bookingEndDate) {
         this.car = car;
         this.user = user;
         this.bookingStartDate = bookingStartDate;
         this.bookingEndDate = bookingEndDate;
+        this.booking_id = booking_id;
     }
 
-    public Car getCar() {
+    public String getCar() {
         return car;
     }
 
-    public void setCar(Car car) {
+    public void setCar(String car) {
         this.car = car;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
@@ -52,5 +51,12 @@ public class BookingDTO {
 
     public void setBookingEndDate(Date bookingEndDate) {
         this.bookingEndDate = bookingEndDate;
+    }
+    public String getBooking_id() {
+        return booking_id;
+    }
+
+    public void setBooking_id(String booking_id) {
+        this.booking_id = booking_id;
     }
 }
