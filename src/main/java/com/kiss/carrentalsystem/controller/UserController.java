@@ -1,5 +1,6 @@
 package com.kiss.carrentalsystem.controller;
 
+import com.kiss.carrentalsystem.response.UserResponse;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +30,12 @@ public class UserController {
         {
             LoginResponse loginResponse = userService.loginUser(loginDTO);
             return ResponseEntity.ok(loginResponse);
+        }
+
+        @PostMapping(path = "/updateName")
+        public ResponseEntity<?> updateName(@RequestBody UserDTO userDTO, String input) {
+            UserResponse userResponse = userService.updateName(userDTO, input);
+            return ResponseEntity.ok(userResponse);
         }
     }
 

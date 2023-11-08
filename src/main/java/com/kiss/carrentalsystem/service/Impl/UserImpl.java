@@ -3,6 +3,7 @@ import com.kiss.carrentalsystem.dto.UserDTO;
 import com.kiss.carrentalsystem.dto.LoginDTO;
 import com.kiss.carrentalsystem.entity.User;
 import com.kiss.carrentalsystem.repo.UserRepo;
+import com.kiss.carrentalsystem.response.UserResponse;
 import com.kiss.carrentalsystem.service.UserService;
 import com.kiss.carrentalsystem.response.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +52,16 @@ public class UserImpl implements UserService {
             return new LoginResponse("Email not exits", false);
         }
     }
+
+    @Override
+    public UserResponse updateName(UserDTO userDTO, String input){
+        User user1 = userRepo.findByEmail(userDTO.getEmail());
+        if (user1 != null){
+            user1.setName(input); //to be fixed
+            userRepo.save(user1);
+            return new UserResponse("Name change successful", true);
+        }
+        return new UserResponse("Name change failed", false);
+    }
+
 }
