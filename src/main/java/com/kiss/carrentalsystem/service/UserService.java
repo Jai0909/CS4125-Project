@@ -9,6 +9,11 @@ import com.kiss.carrentalsystem.response.UserResponse;
 public interface UserService {
     UserResponse addUser(UserDTO userDTO);
     LoginResponse loginUser(LoginDTO loginDTO);
-    UserResponse updateName(UserDTO userDTO, String input);
+    UserResponse updateName(UserDTO userDTO, String email);
+    UserResponse updatePhone(UserDTO userDTO, String email);
+
+    UserResponse updateAddress(UserDTO userDTO, String email);
+
+    UserResponse updatePassword(UserDTO userDTO, String email);
 
 }

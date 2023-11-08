@@ -36,5 +36,24 @@ public class UserController {
             UserResponse userResponse = userService.updateName(userDTO, email);
             return ResponseEntity.ok(userResponse);
         }
+
+        @PatchMapping(path = "/updatePhone/{email}")
+        public ResponseEntity<?> updatePhone(@RequestBody UserDTO userDTO, @PathVariable String email) {
+            UserResponse userResponse = userService.updatePhone(userDTO, email);
+            return ResponseEntity.ok(userResponse);
+        }
+
+        @PatchMapping(path = "/updateAddress/{email}")
+        public ResponseEntity<?> updateAddress(@RequestBody UserDTO userDTO, @PathVariable String email) {
+            UserResponse userResponse = userService.updateAddress(userDTO, email);
+            return ResponseEntity.ok(userResponse);
+        }
+
+        @PatchMapping(path = "/updatePassword/{email}")
+        public ResponseEntity<?> updatePassword(@RequestBody UserDTO userDTO, @PathVariable String email) {
+            UserResponse userResponse = userService.updatePassword(userDTO, email);
+            return ResponseEntity.ok(userResponse);
+        }
+
     }
 

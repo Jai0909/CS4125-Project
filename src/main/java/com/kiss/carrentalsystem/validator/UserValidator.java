@@ -6,8 +6,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserValidator {
-    public boolean validateName(String user) {
-        if (containsNumbers(user)) {
+    public boolean validateName(String name) {
+        if (containsNumbers(name)) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validatePhone(String number) {
+        if(containsLetters(number)){
             return false;
         }
         return true;
@@ -34,4 +41,11 @@ public class UserValidator {
         }
         return false;
     }
-}
+
+    public static boolean containsLetters(String input) {
+        Pattern pattern = Pattern.compile("[a-zA-Z]");
+        Matcher matcher = pattern.matcher(input);
+        return matcher.find();
+    }
+
+    }
