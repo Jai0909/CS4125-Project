@@ -3,7 +3,7 @@ import axios from "axios";
 
 function Register() {
 
-    const [employeename, setEmployeename] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -11,12 +11,12 @@ function Register() {
     async function save(event) {
         event.preventDefault();
         try {
-            await axios.post("http://localhost:8085/api/v1/employee/save", {
-                employeename: employeename,
+            await axios.post("http://localhost:8085/user/save", {
+                username: username,
                 email: email,
                 password: password,
             });
-            alert("Employee Registation Successfully");
+            alert("User Registation Successfully");
 
         } catch (err) {
             alert(err);
@@ -27,16 +27,16 @@ function Register() {
         <div>
             <div class="container mt-4" >
                 <div class="card">
-                    <h1>Student Registation</h1>
+                    <h1>Registation</h1>
 
                     <form>
                         <div class="form-group">
-                            <label>Employee name</label>
-                            <input type="text"  class="form-control" id="employeename" placeholder="Enter Name"
+                            <label>User name</label>
+                            <input type="text"  class="form-control" id="username" placeholder="Enter Name"
 
-                                   value={employeename}
+                                   value={username}
                                    onChange={(event) => {
-                                       setEmployeename(event.target.value);
+                                       setUsername(event.target.value);
                                    }}
                             />
 

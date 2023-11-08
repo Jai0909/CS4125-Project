@@ -7,21 +7,22 @@ import com.kiss.carrentalsystem.response.UserResponse;
 import com.kiss.carrentalsystem.service.UserService;
 import com.kiss.carrentalsystem.response.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 @Service
 public class UserImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
     @Override
     public String addUser(UserDTO userDTO) {
         User user = new User(
                 userDTO.getEmail(),
                 userDTO.getName(),
-                this.passwordEncoder.encode(userDTO.getPassword()),
+//                this.passwordEncoder.encode(userDTO.getPassword()),
+                userDTO.getPassword(),
                 userDTO.getPhoneno(),
                 userDTO.getAddress(),
                 userDTO.getUserMilage(),
@@ -37,8 +38,9 @@ public class UserImpl implements UserService {
         if (user1 != null) {
             String password = loginDTO.getPassword();
             String encodedPassword = user1.getPassword();
-            Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
-            if (isPwdRight) {
+//            Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
+//            if (isPwdRight) {
+              if (password.equals(user1.getPassword())) {
                 Optional<User> user = userRepo.findOneByEmailAndPassword(loginDTO.getEmail(), encodedPassword);
                 if (user.isPresent()) {
                     return new LoginResponse("Login Success", true);

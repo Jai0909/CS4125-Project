@@ -1,22 +1,21 @@
 package com.kiss.carrentalsystem.entity;
-import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name="car") //todo check table name
+@Table(name="Car") //todo check table name
 public class Car {
     @Id
-    @Column(name="makeAndModel", length = 255) //todo adjust names and lengths to fit
+    @Column(name="make_and_model", length = 255) //todo adjust names and lengths to fit
     private String makeAndModel;
-    @Column(name="licencePlate", length = 255)
+    @Column(name="reg_no", length = 255)
     private String licencePlate;
     @Column(name="milage", length = 255)
     private int milage;
-    @Column(name="vehicleType", length = 255)
+    @Column(name="type", length = 255)
     private String vehicleType;
-    @Column(name="damaged", length = 255)
+    @Column(name="damages", length = 255)
     private boolean damaged;
-    @Column(name="basePrice", length = 255)
+    @Column(name="price", length = 255)
     private float basePrice;
     @Column(name="availability", length = 255)
     private boolean availability;

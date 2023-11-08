@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/v1/user")
+@RequestMapping("user")
 public class UserController {
 
         @Autowired
@@ -22,8 +22,7 @@ public class UserController {
         @PostMapping(path = "/save")
         public String saveUser(@RequestBody UserDTO userDTO)
         {
-            String id = userService.addUser(userDTO);
-            return id;
+            return userService.addUser(userDTO);
         }
         @PostMapping(path = "/login")
         public ResponseEntity<?> loginEmployee(@RequestBody LoginDTO loginDTO)
