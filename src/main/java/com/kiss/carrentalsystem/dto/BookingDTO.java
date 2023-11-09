@@ -16,9 +16,9 @@ public class BookingDTO {
     public BookingDTO(String car, String user, String booking_id, Date bookingStartDate, Date bookingEndDate) {
         this.car = car;
         this.user = user;
+        this.booking_id = booking_id;
         this.bookingStartDate = bookingStartDate;
         this.bookingEndDate = bookingEndDate;
-        this.booking_id = booking_id;
     }
 
     public String getCar() {
@@ -52,6 +52,7 @@ public class BookingDTO {
     public void setBookingEndDate(Date bookingEndDate) {
         this.bookingEndDate = bookingEndDate;
     }
+
     public String getBooking_id() {
         return booking_id;
     }
