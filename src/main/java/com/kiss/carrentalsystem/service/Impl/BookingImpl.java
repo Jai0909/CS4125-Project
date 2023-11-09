@@ -8,6 +8,7 @@ import com.kiss.carrentalsystem.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class BookingImpl implements BookingService {
+    
     @Autowired
     private BookingRepo bookingRepo;
 
@@ -25,7 +26,7 @@ public class BookingImpl implements BookingService {
     }
     @Override
     public UserResponse cancelBooking(BookingDTO bookingDTO) {
-        Booking booking = bookingRepo.findByid(bookingDTO.getBooking_id());
+        Booking booking = bookingRepo.findByBooking_id(bookingDTO.getBooking_id());
         if (booking != null) {
             bookingRepo.delete(booking);
             return new UserResponse("Booking Deleted", true);
