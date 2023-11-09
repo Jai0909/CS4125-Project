@@ -6,7 +6,9 @@ import com.kiss.carrentalsystem.repo.BookingRepo;
 import com.kiss.carrentalsystem.response.UserResponse;
 import com.kiss.carrentalsystem.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BookingImpl implements BookingService {
     
     @Autowired
