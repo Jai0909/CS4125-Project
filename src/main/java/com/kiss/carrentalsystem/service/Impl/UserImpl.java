@@ -7,12 +7,16 @@ import com.kiss.carrentalsystem.response.CarResponse;
 import com.kiss.carrentalsystem.response.UserResponse;
 import com.kiss.carrentalsystem.service.UserService;
 import com.kiss.carrentalsystem.response.LoginResponse;
+import com.kiss.carrentalsystem.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.xml.validation.Validator;
 import java.util.Optional;
 @Service
 public class UserImpl implements UserService {
+    UserValidator validator = new UserValidator();
     @Autowired
     private UserRepo userRepo;
 //    @Autowired
@@ -55,15 +59,57 @@ public class UserImpl implements UserService {
         }
     }
 
+
     @Override
     public UserResponse updateName(UserDTO userDTO, String email){
-        User user2 = userRepo.findByEmail(email);
-        if (user2 != null){
-            user2.setName(userDTO.getName());
-            userRepo.save(user2);
-            return new UserResponse("Name change successful", true);
+        User user = userRepo.findByEmail(email);
+        if (user != null){
+            if(validator.validateName(user.getName())) {
+                user.setName(userDTO.getName());
+                userRepo.save(user);
+                return new UserResponse("Name changed successfully", true);
+            } else {
+                return new UserResponse("Name change failed, not allowed to use numbers", false);
+            }
         }
-        return new UserResponse("Name change failed", false);
+        return new UserResponse("Name change failed, user not found", false);
     }
 
+    public UserResponse updatePhone(UserDTO userDTO, String email){
+        User user = userRepo.findByEmail(email);
+        if (user != null){
+            if(validator.validatePhone(user.getPassword())) {
+                user.setPhoneno(userDTO.getPhoneno());
+                userRepo.save(user);
+                return new UserResponse("Phone Number changed successfully", true);
+            } else {
+                return new UserResponse("Phone number changed failed, not allowed letters", false);
+            }
+        }
+        return new UserResponse("Phone Number change failed, user not found", false);
+    }
+
+    public UserResponse updateAddress(UserDTO userDTO, String email){
+        User user = userRepo.findByEmail(email);
+        if (user != null){
+            user.setAddress(userDTO.getAddress());
+            userRepo.save(user);
+            return new UserResponse("Address changed successfully", true);
+        }
+        return new UserResponse("Address change failed, user not found", false);
+    }
+
+    public UserResponse updatePassword(UserDTO userDTO, String email){
+        User user = userRepo.findByEmail(email);
+        if (user != null){
+            if(validator.validatePassword(user.getPassword())) {
+                user.setPassword(userDTO.getPassword());
+                userRepo.save(user);
+                return new UserResponse("Password changed successfully", true);
+            } else {
+                return new UserResponse("Password does not match with our requirements\nPassword requires minumim 8 character, a capital letter and a number", false);
+            }
+        }
+        return new UserResponse("Password change failed", false);
+    }
 }
