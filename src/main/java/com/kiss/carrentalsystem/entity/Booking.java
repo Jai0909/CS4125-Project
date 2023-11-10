@@ -7,13 +7,13 @@ import java.util.Date;
 @Entity
 @Table(name="Booking") //todo check table name
 public class Booking {
-    @Id
     @Column(name = "reg_no", length = 255) //todo adjust names and lengths to fit
     private String car;
     @Column(name = "email", length = 255)
     private String user;
+    @Id
     @Column(name = "booking_id", length = 255)
-    private String booking_id;
+    private String bookingId;
     @Column(name = "start_date", length = 255)
     private Date bookingStartDate;
     @Column(name = "end_date", length = 255)
@@ -22,12 +22,12 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(String car, String user, String booking_id, Date bookingStartDate, Date bookingEndDate) {
+    public Booking(String car, String user, String bookingId, Date bookingStartDate, Date bookingEndDate) {
         this.car = car;
         this.user = user;
         this.bookingStartDate = bookingStartDate;
         this.bookingEndDate = bookingEndDate;
-        this.booking_id = booking_id;
+        this.bookingId = bookingId;
     }
 
     public String getCar() {
@@ -62,11 +62,11 @@ public class Booking {
         this.bookingEndDate = bookingEndDate;
     }
 
-    public String getBooking_id() {
-        return booking_id;
+    public String getBookingId() {
+        return bookingId;
     }
 
-    public void setBooking_id(String booking_id) {
-        this.booking_id = booking_id;
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
     }
 }

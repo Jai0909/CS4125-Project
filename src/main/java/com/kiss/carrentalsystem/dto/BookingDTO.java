@@ -8,15 +8,15 @@ public class BookingDTO {
     private String user;
     private Date bookingStartDate;
     private Date bookingEndDate;
-    private String booking_id;
+    private String bookingId;
 
     public BookingDTO() {
     }
 
-    public BookingDTO(String car, String user, String booking_id, Date bookingStartDate, Date bookingEndDate) {
+    public BookingDTO(String car, String user, String bookingId, Date bookingStartDate, Date bookingEndDate) {
         this.car = car;
         this.user = user;
-        this.booking_id = booking_id;
+        this.bookingId = bookingId;
         this.bookingStartDate = bookingStartDate;
         this.bookingEndDate = bookingEndDate;
     }
@@ -53,11 +53,11 @@ public class BookingDTO {
         this.bookingEndDate = bookingEndDate;
     }
 
-    public String getBooking_id() {
-        return booking_id;
+    public String getBookingId() {
+        return bookingId;
     }
 
-    public void setBooking_id(String booking_id) {
-        this.booking_id = booking_id;
+    public void setBookingId(String booking_id) {
+        this.bookingId = booking_id;
     }
 }
