@@ -1,10 +1,10 @@
 package com.kiss.carrentalsystem.service;
 
 import com.kiss.carrentalsystem.dto.CarDTO;
-import com.kiss.carrentalsystem.response.CarResponse;
+import com.kiss.carrentalsystem.response.DefaultResponse;
 
 public interface CarService {
-    CarResponse addCar(CarDTO carDTO);
+    DefaultResponse addCar(CarDTO carDTO);
 
-    CarResponse deleteCar(CarDTO carDTO);
+    DefaultResponse deleteCar(CarDTO carDTO);
 }
