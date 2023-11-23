@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Table(name="Car") //todo check table name
 public class Car {
     @Id
-    @Column(name="make_and_model", length = 255) //todo adjust names and lengths to fit
+    @Column(name="make_model", length = 255) //todo adjust names and lengths to fit
     private String makeAndModel;
     @Column(name="reg_no", length = 255)
     private String licencePlate;
