@@ -19,6 +19,9 @@ public class UserController {
         @Autowired
         private UserService userService;
 
+        //todo add/remove money from balance
+        //todo add admin/remove admin
+
         @PostMapping(path = "/save")
         public DefaultResponse saveUser(@RequestBody UserDTO userDTO)
         {
