@@ -15,7 +15,7 @@ public class User {
     @Column(name="password", length = 255)
     private String password;
     @Column(name="phoneno", length = 255)
-    private String phoneno;
+    private String phoneNo;
     @Column(name="address", length = 255)
     private String address;
     @Column(name="user_milage")
@@ -23,11 +23,11 @@ public class User {
     @Column(name="date_of_birth")
     private String dateOfBirth;
 
-    public User(String email, String name, String password, String phoneno, String address, int userMilage, String dateOfBirth) {
+    public User(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth) {
         this.email = email;
         this.name = name;
         this.password = password;
-        this.phoneno = phoneno;
+        this.phoneNo = phoneNo;
         this.address = address;
         this.userMilage = userMilage;
         this.dateOfBirth = dateOfBirth;
@@ -76,12 +76,12 @@ public class User {
         this.password = password;
     }
 
-    public String getPhoneno() {
-        return phoneno;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhoneno(String phoneno) {
-        this.phoneno = phoneno;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
 

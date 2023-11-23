@@ -21,7 +21,7 @@ public class UserImpl implements UserService {
                 userDTO.getEmail(),
                 userDTO.getName(),
                 userDTO.getPassword(),
-                userDTO.getPhoneno(),
+                userDTO.getPhoneNo(),
                 userDTO.getAddress(),
                 userDTO.getUserMilage(),
                 userDTO.getDateOfBirth()
@@ -70,7 +70,7 @@ public class UserImpl implements UserService {
         User user = userRepo.findByEmail(email);
         if (user != null){
             if(validator.validatePhone(user.getPassword())) {
-                user.setPhoneno(userDTO.getPhoneno());
+                user.setPhoneNo(userDTO.getPhoneNo());
                 userRepo.save(user);
                 return new DefaultResponse("Phone Number changed successfully", true);
             } else {

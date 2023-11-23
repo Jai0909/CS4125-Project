@@ -1,8 +1,8 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import Register from "./Register";
-import Login from "./Login";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
-import Home from "./Home";
+import Home from "./components/Home";
 
 
 function App() {
@@ -21,4 +21,4 @@ function App() {
     );
 }
 
-export default App;
+export default App; 
