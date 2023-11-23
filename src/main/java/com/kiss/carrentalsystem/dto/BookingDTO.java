@@ -1,5 +1,4 @@
 package com.kiss.carrentalsystem.dto;
-import jakarta.persistence.Column;
 
 import java.util.Date;
 

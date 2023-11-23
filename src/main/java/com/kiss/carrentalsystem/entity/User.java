@@ -2,7 +2,6 @@ package com.kiss.carrentalsystem.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
 
 @Entity
 @Table(name="User")

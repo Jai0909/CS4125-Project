@@ -1,6 +1,5 @@
 package com.kiss.carrentalsystem.dto;
 
-import jakarta.persistence.Column;
 
 public class CarDTO {
 

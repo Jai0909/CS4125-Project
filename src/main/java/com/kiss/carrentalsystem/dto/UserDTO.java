@@ -1,6 +1,5 @@
 package com.kiss.carrentalsystem.dto;
 
-import java.util.Date;
 
 public class UserDTO {
     private String email;
