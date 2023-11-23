@@ -19,11 +19,25 @@ public class Car {
     private float basePrice;
     @Column(name="availability", length = 255)
     private boolean availability;
+    @Column(name="weight", length = 10)
+    private int weight;
 
 
     public Car() {
     }
 
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public Car(String makeAndModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability, int weight) {
+        this(makeAndModel, licencePlate, milage, vehicleType, damaged, basePrice,availability);
+        this.weight = weight;
+    }
     public Car(String makeAndModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability) {
         this.makeAndModel = makeAndModel;
         this.licencePlate = licencePlate;
@@ -32,6 +46,7 @@ public class Car {
         this.damaged = damaged;
         this.basePrice = basePrice;
         this.availability = availability;
+
     }
 
     public String getMakeAndModel() {
