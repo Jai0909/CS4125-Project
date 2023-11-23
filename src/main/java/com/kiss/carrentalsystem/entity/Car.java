@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 @Table(name="Car") //todo check table name
 public class Car {
     @Id
-    @Column(name="make_and_model", length = 255) //todo adjust names and lengths to fit
-    private String makeAndModel;
+    @Column(name="makeModel", length = 255) //todo adjust names and lengths to fit
+    private String makeModel;
     @Column(name="reg_no", length = 255)
     private String licencePlate;
     @Column(name="milage", length = 255)
@@ -24,8 +24,8 @@ public class Car {
     public Car() {
     }
 
-    public Car(String makeAndModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability) {
-        this.makeAndModel = makeAndModel;
+    public Car(String makeModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability) {
+        this.makeModel = makeModel;
         this.licencePlate = licencePlate;
         this.milage = milage;
         this.vehicleType = vehicleType;
@@ -34,12 +34,12 @@ public class Car {
         this.availability = availability;
     }
 
-    public String getMakeAndModel() {
-        return makeAndModel;
+    public String getMakeModel() {
+        return makeModel;
     }
 
-    public void setMakeAndModel(String makeAndModel) {
-        this.makeAndModel = makeAndModel;
+    public void setMakeModel(String makeModel) {
+        this.makeModel = makeModel;
     }
 
     public String getLicencePlate() {
