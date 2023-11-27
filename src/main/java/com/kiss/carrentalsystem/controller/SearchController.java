@@ -17,8 +17,18 @@ public class SearchController {
     @Autowired
     private SearchService searchService;
 
-    @GetMapping(path = "/search/{toSearch}")
-    public List<?> search(@PathVariable String toSearch) {
-        return searchService.search(toSearch);
+    @GetMapping(path = "/searchMakeModel/{toSearch}")
+    public List<?> searchByMakeModel(@PathVariable String toSearch) {
+        return searchService.searchByMakeModel(toSearch);
+    }
+
+    @GetMapping(path = "/searchMilage/{minMilage}/{maxMilage}")
+    public List<?> searchByMilage(@PathVariable int minMilage, @PathVariable int maxMilage) {
+        return searchService.searchByMilage(minMilage, maxMilage);
+    }
+
+    @GetMapping(path = "/searchType/{toSearch}")
+    public List<?> searchByType(@PathVariable String toSearch) {
+        return searchService.searchByType(toSearch);
     }
 }
