@@ -1,5 +1,7 @@
-package com.kiss.carrentalsystem.entity;
+package com.kiss.carrentalsystem.service.Impl;
 
+import com.kiss.carrentalsystem.service.PaymentState;
+import com.kiss.carrentalsystem.entity.User;
 import com.kiss.carrentalsystem.repo.CardDetailsRepo;
 
 public class PositiveBalanceState implements PaymentState {

@@ -1,5 +1,7 @@
 package com.kiss.carrentalsystem.entity;
 
+import com.kiss.carrentalsystem.service.Impl.PositiveBalanceState;
+import com.kiss.carrentalsystem.service.PaymentState;
 import jakarta.persistence.*;
 
 
@@ -26,7 +28,7 @@ public class User {
     @Column(name="balance")
     private float balance;
     @Transient // speciefies that it shouldnt be in db
-    private PaymentContext paymentContext = new PaymentContext();
+    private PaymentState state;
 
     public User(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth, boolean isAdmin, float balance) {
         this.email = email;
@@ -38,6 +40,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.isAdmin = isAdmin;
         this.balance = balance;
+        this.state = new PositiveBalanceState();
     }
 
     public User(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth) {
@@ -48,6 +51,7 @@ public class User {
         this.address = address;
         this.userMilage = userMilage;
         this.dateOfBirth = dateOfBirth;
+        this.state = new PositiveBalanceState();
     }
 
     public User() {
@@ -110,11 +114,11 @@ public class User {
     }
 
     public void addBalance(double amount) {
-        paymentContext.addBalance(this, amount);
+        state.addBalance(this, amount);
     }
 
     public void removeBalance(double amount) {
-        paymentContext.removeBalance(this, amount);
+        state.removeBalance(this, amount);
     }
 
     public boolean isAdmin() {
@@ -134,7 +138,7 @@ public class User {
     }
 
     public void setState(PaymentState state) {
-        paymentContext.setState(state);
+        this.state = state;
     }
 }
 

@@ -1,7 +1,5 @@
 package com.kiss.carrentalsystem.dto;
 
-import com.kiss.carrentalsystem.entity.PaymentContext;
-
 public class UserDTO {
     private String email;
     private String name;
@@ -10,7 +8,6 @@ public class UserDTO {
     private String address;
     private int userMilage;
     private String dateOfBirth;
-    PaymentContext paymentContext = new PaymentContext();
     private boolean isAdmin;
     private float balance;
 
