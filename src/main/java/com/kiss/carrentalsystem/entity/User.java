@@ -22,6 +22,8 @@ public class User {
     @Column(name="date_of_birth")
     private String dateOfBirth;
 
+    private PaymentContext paymentContext;
+
     public User(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth) {
         this.email = email;
         this.name = name;
@@ -83,14 +85,20 @@ public class User {
         this.phoneNo = phoneNo;
     }
 
-
-
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void addBalance(double amount) {
+        paymentContext.addBalance(amount);
+    }
+
+    public void removeBalance(double amount) {
+        paymentContext.removeBalance(amount);
     }
 }
 
