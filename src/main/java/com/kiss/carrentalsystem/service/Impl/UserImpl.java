@@ -24,7 +24,9 @@ public class UserImpl implements UserService {
                 userDTO.getPhoneNo(),
                 userDTO.getAddress(),
                 userDTO.getUserMilage(),
-                userDTO.getDateOfBirth()
+                userDTO.getDateOfBirth(),
+                userDTO.isAdmin(),
+                userDTO.getBalance()
         );
         userRepo.save(user);
         return new DefaultResponse("User added Successfully", true);
