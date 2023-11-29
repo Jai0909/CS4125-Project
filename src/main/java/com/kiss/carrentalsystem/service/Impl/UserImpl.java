@@ -52,6 +52,30 @@ public class UserImpl implements UserService {
         }
     }
 
+    @Override
+    public DefaultResponse addBalance(UserDTO userDTO, String email) {
+        User user = userRepo.findByEmail(email);
+        if (user != null) {
+            user.addBalance(userDTO.getBalance());
+            userRepo.save(user);
+            return new DefaultResponse("Money added to balance successfully", true);
+        } else {
+            return new DefaultResponse("Failed to add money to balance", false);
+        }
+    }
+
+    @Override
+    public DefaultResponse removeBalance(UserDTO userDTO, String email) {
+        User user = userRepo.findByEmail(email);
+        if (user != null) {
+            user.removeBalance(userDTO.getBalance());
+            userRepo.save(user);
+            return new DefaultResponse("Money removed from Balance successfully", true);
+        } else {
+            return new DefaultResponse("Failed to remove money from balance", false);
+        }
+    }
+
 
     @Override
     public DefaultResponse updateName(UserDTO userDTO, String email){

@@ -25,8 +25,8 @@ public class User {
     private boolean isAdmin;
     @Column(name="balance")
     private float balance;
-
-    private PaymentContext paymentContext;
+    @Transient // speciefies that it shouldnt be in db
+    private PaymentContext paymentContext = new PaymentContext();
 
     public User(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth, boolean isAdmin, float balance) {
         this.email = email;
@@ -110,11 +110,13 @@ public class User {
     }
 
     public void addBalance(double amount) {
-        paymentContext.addBalance(amount);
+        paymentContext.addBalance(this, amount);
     }
 
     public void removeBalance(double amount) {
-        paymentContext.removeBalance(amount);
+        paymentContext.removeBalance(this, amount);
+    }
+
     public boolean isAdmin() {
         return isAdmin;
     }
@@ -129,6 +131,10 @@ public class User {
 
     public void setBalance(float balance) {
         this.balance = balance;
+    }
+
+    public void setState(PaymentState state) {
+        paymentContext.setState(state);
     }
 }
 

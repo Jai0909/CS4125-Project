@@ -38,6 +38,18 @@ public class UserController {
             return ResponseEntity.ok(userResponse);
         }
 
+    @PatchMapping(path = "/addBalance/{email}")
+    public ResponseEntity<?> addBalance(@RequestBody UserDTO userDTO, @PathVariable String email) {
+        DefaultResponse userResponse = userService.addBalance(userDTO, email);
+        return ResponseEntity.ok(userResponse);
+    }
+
+    @PatchMapping(path = "/removeBalance/{email}")
+    public ResponseEntity<?> removeBalance(@RequestBody UserDTO userDTO, @PathVariable String email) {
+        DefaultResponse userResponse = userService.removeBalance(userDTO, email);
+        return ResponseEntity.ok(userResponse);
+    }
+
         @PatchMapping(path = "/updatePhone/{email}")
         public ResponseEntity<?> updatePhone(@RequestBody UserDTO userDTO, @PathVariable String email) {
             DefaultResponse userResponse = userService.updatePhone(userDTO, email);

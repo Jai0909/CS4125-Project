@@ -1,30 +1,31 @@
 package com.kiss.carrentalsystem.entity;
 
+import com.kiss.carrentalsystem.repo.CardDetailsRepo;
+
 public class PositiveBalanceState implements PaymentState {
-    private PaymentContext context;
-
-    public PositiveBalanceState(PaymentContext context) {
-        this.context = context;
-    }
+    private CardDetailsRepo cardDetailsRepo;
 
     @Override
-    public void addBalance(PaymentContext context, double amount) {
-        context.setBalance(context.getBalance() + amount);
-        System.out.println("Balance added. Current balance: " + context.getBalance());
-    }
-
-    @Override
-    public void removeBalance(PaymentContext context, double amount) {
-        if (context.getBalance() >= amount) {
-            context.setBalance(context.getBalance() - amount);
-            System.out.println("Balance removed. Current balance: " + context.getBalance());
-
-            // Check if balance becomes negative after removal
-            if (context.getBalance() < 0) {
-                context.setState(new NegativeBalanceState(context));
-            }
+    public void addBalance(User user, double amount) {
+        if (cardDetailsRepo.findByCardHolder(user.getName()) != null) {
+            user.setBalance((float) (user.getBalance() + amount));
         } else {
-            System.out.println("Insufficient balance.");
+            //todo add a return for message saying to add card to acc.
         }
     }
+
+    @Override
+    public void removeBalance(User user, double amount) {
+        if (user.getBalance() >= amount) {
+            user.setBalance((float) (user.getBalance() - amount));
+            // change to negative balance state if balance becomes negative
+            if (user.getBalance() < 0) {
+                user.setState(new NegativeBalanceState());
+            }
+            //todo removed balance successfully message
+        } else {
+            //todo Remove from balance failed insufficient funds.
+        }
+    }
+
 }
