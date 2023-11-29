@@ -21,6 +21,8 @@ public class Car {
     @Column(name="availability", length = 255)
     private boolean availability;
 
+    @OneToOne(mappedBy = "car")
+    private Booking booking;
 
     public Car() {
     }
@@ -90,4 +92,13 @@ public class Car {
     public void setAvailability(boolean availability) {
         this.availability = availability;
     }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
 }

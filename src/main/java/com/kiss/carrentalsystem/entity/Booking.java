@@ -7,10 +7,7 @@ import java.util.Date;
 @Entity
 @Table(name="Booking") //todo check table name
 public class Booking {
-    @Column(name = "reg_no", length = 255) //todo adjust names and lengths to fit
-    private String car;
-    @Column(name = "email", length = 255)
-    private String user;
+
     @Id
     @Column(name = "booking_id", length = 255)
     private String bookingId;
@@ -19,31 +16,44 @@ public class Booking {
     @Column(name = "end_date", length = 255)
     private Date bookingEndDate;
 
-    public Booking() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "email", referencedColumnName = "email", insertable = false, updatable = false)
+    private User user;
 
-    public Booking(String car, String user, String bookingId, Date bookingStartDate, Date bookingEndDate) {
-        this.car = car;
-        this.user = user;
+    @OneToOne
+    @JoinColumn(name = "reg_no", referencedColumnName = "reg_no", insertable = false, updatable = false)
+    private Car car;
+
+    @Column(name = "email")
+    private String userEmail; // Use a basic type for the foreign key
+
+    @Column(name = "reg_no")
+    private String carRegNo; // Use a basic type for the foreign key
+
+    public Booking(String userEmail, String carRegNo, String bookingId, Date bookingStartDate, Date bookingEndDate) {
+        this.userEmail = userEmail;
+        this.carRegNo = carRegNo;
         this.bookingStartDate = bookingStartDate;
         this.bookingEndDate = bookingEndDate;
         this.bookingId = bookingId;
     }
-
-    public String getCar() {
-        return car;
+    public Booking() {
     }
 
-    public void setCar(String car) {
-        this.car = car;
-    }
-
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public Date getBookingStartDate() {
@@ -68,5 +78,20 @@ public class Booking {
 
     public void setBookingId(String bookingId) {
         this.bookingId = bookingId;
+    }
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getCarRegNo() {
+        return carRegNo;
+    }
+
+    public void setCarRegNo(String carRegNo) {
+        this.carRegNo = carRegNo;
     }
 }
