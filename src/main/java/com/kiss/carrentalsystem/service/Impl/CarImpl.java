@@ -16,7 +16,7 @@ public class CarImpl implements CarService {
 
     @Override
     public DefaultResponse addCar(CarDTO carDTO) {
-        Car car1 = new Car(carDTO.getMakeAndModel(),
+        Car car1 = new Car(carDTO.getMakeModel(),
                 carDTO.getLicencePlate(),
                 carDTO.getMilage(),
                 carDTO.getVehicleType(),

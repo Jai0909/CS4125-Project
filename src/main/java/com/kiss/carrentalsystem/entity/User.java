@@ -21,8 +21,24 @@ public class User {
     private int userMilage;
     @Column(name="date_of_birth")
     private String dateOfBirth;
+    @Column(name="is_admin")
+    private boolean isAdmin;
+    @Column(name="balance")
+    private float balance;
 
     private PaymentContext paymentContext;
+
+    public User(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth, boolean isAdmin, float balance) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phoneNo = phoneNo;
+        this.address = address;
+        this.userMilage = userMilage;
+        this.dateOfBirth = dateOfBirth;
+        this.isAdmin = isAdmin;
+        this.balance = balance;
+    }
 
     public User(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth) {
         this.email = email;
@@ -99,6 +115,20 @@ public class User {
 
     public void removeBalance(double amount) {
         paymentContext.removeBalance(amount);
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 }
 

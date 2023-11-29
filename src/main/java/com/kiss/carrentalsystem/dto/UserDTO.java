@@ -1,6 +1,5 @@
 package com.kiss.carrentalsystem.dto;
 
-
 import com.kiss.carrentalsystem.entity.PaymentContext;
 
 public class UserDTO {
@@ -12,9 +11,22 @@ public class UserDTO {
     private int userMilage;
     private String dateOfBirth;
     PaymentContext paymentContext = new PaymentContext();
-
+    private boolean isAdmin;
+    private float balance;
 
     public UserDTO() {
+    }
+
+    public UserDTO(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth, boolean isAdmin, float balance) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phoneNo = phoneNo;
+        this.address = address;
+        this.userMilage = userMilage;
+        this.dateOfBirth = dateOfBirth;
+        this.isAdmin = isAdmin;
+        this.balance = balance;
     }
 
     public UserDTO(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth) {
@@ -81,5 +93,21 @@ public class UserDTO {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 }

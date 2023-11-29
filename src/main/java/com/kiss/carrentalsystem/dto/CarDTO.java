@@ -3,7 +3,7 @@ package com.kiss.carrentalsystem.dto;
 
 public class CarDTO {
 
-    private String makeAndModel;
+    private String makeModel;
     private String licencePlate;
     private int milage;
     private String vehicleType;
@@ -14,8 +14,8 @@ public class CarDTO {
     public CarDTO() {
     }
 
-    public CarDTO(String makeAndModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability) {
-        this.makeAndModel = makeAndModel;
+    public CarDTO(String makeModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability) {
+        this.makeModel = makeModel;
         this.licencePlate = licencePlate;
         this.milage = milage;
         this.vehicleType = vehicleType;
@@ -24,12 +24,12 @@ public class CarDTO {
         this.availability = availability;
     }
 
-    public String getMakeAndModel() {
-        return makeAndModel;
+    public String getMakeModel() {
+        return makeModel;
     }
 
-    public void setMakeAndModel(String makeAndModel) {
-        this.makeAndModel = makeAndModel;
+    public void setMakeModel(String makeModel) {
+        this.makeModel = makeModel;
     }
 
     public String getLicencePlate() {

@@ -23,13 +23,11 @@ public class UserController {
         //todo add admin/remove admin
 
         @PostMapping(path = "/save")
-        public DefaultResponse saveUser(@RequestBody UserDTO userDTO)
-        {
+        public DefaultResponse saveUser(@RequestBody UserDTO userDTO) {
             return userService.addUser(userDTO);
         }
         @PostMapping(path = "/login")
-        public ResponseEntity<?> loginEmployee(@RequestBody LoginDTO loginDTO)
-        {
+        public ResponseEntity<?> loginEmployee(@RequestBody LoginDTO loginDTO) {
             DefaultResponse loginResponse = userService.loginUser(loginDTO);
             return ResponseEntity.ok(loginResponse);
         }
