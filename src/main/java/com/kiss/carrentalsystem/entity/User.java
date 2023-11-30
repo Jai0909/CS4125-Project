@@ -1,5 +1,6 @@
 package com.kiss.carrentalsystem.entity;
 
+import com.kiss.carrentalsystem.response.DefaultResponse;
 import com.kiss.carrentalsystem.service.Impl.PositiveBalanceState;
 import com.kiss.carrentalsystem.service.PaymentState;
 import jakarta.persistence.*;
@@ -113,12 +114,18 @@ public class User {
         this.address = address;
     }
 
-    public void addBalance(double amount) {
-        state.addBalance(this, amount);
+    public DefaultResponse addBalance(double amount) {
+        if (state == null) {
+            state = new PositiveBalanceState();
+        }
+        return state.addBalance(this, amount);
     }
 
-    public void removeBalance(double amount) {
-        state.removeBalance(this, amount);
+    public DefaultResponse removeBalance(double amount) {
+        if (state == null) {
+            state = new PositiveBalanceState();
+        }
+        return state.removeBalance(this, amount);
     }
 
     public boolean isAdmin() {

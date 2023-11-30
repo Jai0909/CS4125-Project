@@ -56,9 +56,9 @@ public class UserImpl implements UserService {
     public DefaultResponse addBalance(UserDTO userDTO, String email) {
         User user = userRepo.findByEmail(email);
         if (user != null) {
-            user.addBalance(userDTO.getBalance());
+            DefaultResponse response = user.addBalance(userDTO.getBalance());
             userRepo.save(user);
-            return new DefaultResponse("Money added to balance successfully", true);
+            return response;
         } else {
             return new DefaultResponse("Failed to add money to balance", false);
         }
@@ -68,9 +68,9 @@ public class UserImpl implements UserService {
     public DefaultResponse removeBalance(UserDTO userDTO, String email) {
         User user = userRepo.findByEmail(email);
         if (user != null) {
-            user.removeBalance(userDTO.getBalance());
+            DefaultResponse response = user.removeBalance(userDTO.getBalance());
             userRepo.save(user);
-            return new DefaultResponse("Money removed from Balance successfully", true);
+            return response;
         } else {
             return new DefaultResponse("Failed to remove money from balance", false);
         }
