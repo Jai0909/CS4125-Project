@@ -30,9 +30,9 @@ public class Booking {
     @Column(name = "reg_no")
     private String carRegNo; // Use a basic type for the foreign key
 
-    public Booking(String userEmail, String carRegNo, String bookingId, Date bookingStartDate, Date bookingEndDate) {
-        this.userEmail = userEmail;
-        this.carRegNo = carRegNo;
+    public Booking(User user, Car car, String bookingId, Date bookingStartDate, Date bookingEndDate) {
+        this.user = user;
+        this.car = car;
         this.bookingStartDate = bookingStartDate;
         this.bookingEndDate = bookingEndDate;
         this.bookingId = bookingId;

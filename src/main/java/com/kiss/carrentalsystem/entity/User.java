@@ -120,7 +120,8 @@ public class User {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
-    public boolean isAdmin() {
+    }
+        public boolean isAdmin() {
         return isAdmin;
     }
 
