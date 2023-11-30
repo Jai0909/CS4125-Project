@@ -45,6 +45,10 @@ function Login() {
 
     }
 
+    const goToRegister = () => {
+        navigate('/register');
+    };
+
     return (
         <div>
             <div class="container">
@@ -83,6 +87,11 @@ function Login() {
                             </div>
                             <button type="submit" class="btn btn-primary" onClick={login} >Login</button>
                         </form>
+
+                        <br />
+                        <button className="btn btn-secondary" onClick={goToRegister}>
+                            Register
+                        </button>
 
                     </div>
                 </div>
