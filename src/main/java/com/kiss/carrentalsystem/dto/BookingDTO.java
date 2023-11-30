@@ -6,8 +6,6 @@ import com.kiss.carrentalsystem.entity.User;
 import java.util.Date;
 
 public class BookingDTO {
-    private String carRegNo;
-    private String userEmail;
     private Date bookingStartDate;
     private Date bookingEndDate;
     private String bookingId;
@@ -17,9 +15,9 @@ public class BookingDTO {
     public BookingDTO() {
     }
 
-    public BookingDTO(String carRegNo, String userEmail, String bookingId, Date bookingStartDate, Date bookingEndDate) {
-        this.carRegNo = carRegNo;
-        this.userEmail = userEmail;
+    public BookingDTO(Car car, User user, String bookingId, Date bookingStartDate, Date bookingEndDate) {
+        this.car = car;
+        this.user = user;
         this.bookingId = bookingId;
         this.bookingStartDate = bookingStartDate;
         this.bookingEndDate = bookingEndDate;
@@ -65,19 +63,4 @@ public class BookingDTO {
         this.bookingId = booking_id;
     }
 
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getCarRegNo() {
-        return carRegNo;
-    }
-
-    public void setCarRegNo(String carRegNo) {
-        this.carRegNo = carRegNo;
-    }
 }

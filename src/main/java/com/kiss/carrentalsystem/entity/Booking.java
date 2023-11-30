@@ -24,12 +24,6 @@ public class Booking {
     @JoinColumn(name = "reg_no", referencedColumnName = "reg_no", insertable = false, updatable = false)
     private Car car;
 
-    @Column(name = "email")
-    private String userEmail; // Use a basic type for the foreign key
-
-    @Column(name = "reg_no")
-    private String carRegNo; // Use a basic type for the foreign key
-
     public Booking(User user, Car car, String bookingId, Date bookingStartDate, Date bookingEndDate) {
         this.user = user;
         this.car = car;
@@ -78,20 +72,5 @@ public class Booking {
 
     public void setBookingId(String bookingId) {
         this.bookingId = bookingId;
-    }
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getCarRegNo() {
-        return carRegNo;
-    }
-
-    public void setCarRegNo(String carRegNo) {
-        this.carRegNo = carRegNo;
     }
 }
