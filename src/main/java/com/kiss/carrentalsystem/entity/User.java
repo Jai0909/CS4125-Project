@@ -2,6 +2,8 @@ package com.kiss.carrentalsystem.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name="User")
@@ -22,6 +24,9 @@ public class User {
     @Column(name="date_of_birth")
     private String dateOfBirth;
 
+    @OneToMany(mappedBy = "user")
+    private List<Booking> bookings;
+    
     @Column(name="is_admin")
     private boolean isAdmin;
 
@@ -109,7 +114,14 @@ public class User {
         this.address = address;
     }
 
-    public boolean isAdmin() {
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+        public boolean isAdmin() {
         return isAdmin;
     }
 
