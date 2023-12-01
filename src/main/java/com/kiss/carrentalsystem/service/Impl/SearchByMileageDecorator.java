@@ -33,7 +33,7 @@ public class SearchByMileageDecorator implements SearchService {
     @Override
     public List<String> searchByMilage(int minMilage, int maxMilage) {
         List<Car> cars = carRepo.findByMilageBetween(minMilage,maxMilage);
-        return baseSearchService.searchByMilage(minMilage, maxMilage);
+        return extractLicensePlates(cars);
     }
 
     private List<String> extractLicensePlates(List<Car> cars) {
