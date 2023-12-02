@@ -7,10 +7,7 @@ import java.util.Date;
 @Entity
 @Table(name="Booking") //todo check table name
 public class Booking {
-    @Column(name = "reg_no", length = 255) //todo adjust names and lengths to fit
-    private String car;
-    @Column(name = "email", length = 255)
-    private String user;
+
     @Id
     @Column(name = "booking_id", length = 255)
     private String bookingId;
@@ -19,31 +16,38 @@ public class Booking {
     @Column(name = "end_date", length = 255)
     private Date bookingEndDate;
 
-    public Booking() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "email", referencedColumnName = "email", insertable = false, updatable = false)
+    private User user;
 
-    public Booking(String car, String user, String bookingId, Date bookingStartDate, Date bookingEndDate) {
-        this.car = car;
+    @OneToOne
+    @JoinColumn(name = "reg_no", referencedColumnName = "reg_no", insertable = false, updatable = false)
+    private Car car;
+
+    public Booking(User user, Car car, String bookingId, Date bookingStartDate, Date bookingEndDate) {
         this.user = user;
+        this.car = car;
         this.bookingStartDate = bookingStartDate;
         this.bookingEndDate = bookingEndDate;
         this.bookingId = bookingId;
     }
-
-    public String getCar() {
-        return car;
+    public Booking() {
     }
 
-    public void setCar(String car) {
-        this.car = car;
-    }
-
-    public String getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(User user) {
         this.user = user;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public Date getBookingStartDate() {

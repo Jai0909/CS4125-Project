@@ -4,6 +4,7 @@ import com.kiss.carrentalsystem.dto.BookingDTO;
 import com.kiss.carrentalsystem.response.DefaultResponse;
 import com.kiss.carrentalsystem.service.BookingService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,7 @@ public class BookingController {
     @Autowired
     private BasePDFGenerator pdfGeneratorService;
 
+    @Transactional
     @PostMapping(path = "/addBooking")
     public DefaultResponse addBooking(@RequestBody BookingDTO bookingDTO, HttpServletResponse response) {
         DefaultResponse bookingResponse = bookingService.addBooking(bookingDTO);

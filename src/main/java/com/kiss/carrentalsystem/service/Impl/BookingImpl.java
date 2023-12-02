@@ -17,12 +17,12 @@ public class BookingImpl implements BookingService {
     @Override
     public DefaultResponse addBooking(BookingDTO bookingDTO) {
         Booking booking = new Booking(
-                bookingDTO.getCar(),
                 bookingDTO.getUser(),
+                bookingDTO.getCar(),
                 bookingDTO.getBookingId(),
                 bookingDTO.getBookingEndDate(),
                 bookingDTO.getBookingStartDate()
-        );
+                );
         bookingRepo.save(booking);
         return new DefaultResponse("Booking Created", true);
     }
