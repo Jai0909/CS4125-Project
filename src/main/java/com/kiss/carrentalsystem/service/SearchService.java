@@ -5,7 +5,7 @@ public interface SearchService {
 
     List<String> searchByMakeModel(String toSearch);
 
-    List<String> searchByMilage(int minMilage, int maxMilage);
+    List<String> searchByMilage(int milage);
 
     List<String> searchByType (String toSearch);
 }

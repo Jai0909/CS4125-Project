@@ -11,7 +11,7 @@ public interface CarRepo extends JpaRepository<Car, Integer> {
 
     List<Car> findByMakeModelContaining(String toSearch);
 
-    List<Car> findByMilageBetween(int minMilage, int maxMilage);
+    List<Car> findByMilageGreaterThan(int milage);
 
     List<Car> findByVehicleType(String toSearch);
 

@@ -32,8 +32,8 @@ public class SearchByTypeDecorator implements SearchService {
     }
 
     @Override
-    public List<String> searchByMilage(int minMilage, int maxMilage) {
-        return baseSearchService.searchByMilage(minMilage, maxMilage);
+    public List<String> searchByMilage(int milage) {
+        return baseSearchService.searchByMilage(milage);
     }
 
     private List<String> extractLicensePlates(List<Car> cars) {

@@ -28,8 +28,8 @@ public class SearchController {
         return searchService.searchByType(toSearch);
     }
 
-    @GetMapping(path = "/searchMilage/{minMilage}/{maxMilage}")
-    public List<String> searchByMilage(@PathVariable int minMilage, @PathVariable int maxMilage) {
-        return searchService.searchByMilage(minMilage,maxMilage);
+    @GetMapping(path = "/searchMilage/{milage}")
+    public List<String> searchByMilage(@PathVariable int milage) {
+        return searchService.searchByMilage(milage);
     }
 }
