@@ -1,10 +1,7 @@
 package com.kiss.carrentalsystem.controller;
 
-import com.kiss.carrentalsystem.response.DefaultResponse;
-import com.kiss.carrentalsystem.service.SearchService;
+import com.kiss.carrentalsystem.service.Impl.BaseSearchImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,21 +11,25 @@ import java.util.List;
 @RequestMapping("user")
 public class SearchController {
 
+    private final BaseSearchImpl searchService;
+
     @Autowired
-    private SearchService searchService;
+    public SearchController(BaseSearchImpl searchService) {
+        this.searchService = searchService;
+    }
 
     @GetMapping(path = "/searchMakeModel/{toSearch}")
-    public List<?> searchByMakeModel(@PathVariable String toSearch) {
+    public List<String> searchByMakeModel(@PathVariable String toSearch) {
         return searchService.searchByMakeModel(toSearch);
     }
 
-    @GetMapping(path = "/searchMilage/{minMilage}/{maxMilage}")
-    public List<?> searchByMilage(@PathVariable int minMilage, @PathVariable int maxMilage) {
-        return searchService.searchByMilage(minMilage, maxMilage);
+    @GetMapping(path = "/searchType/{toSearch}")
+    public List<String> searchByType(@PathVariable String toSearch) {
+        return searchService.searchByType(toSearch);
     }
 
-    @GetMapping(path = "/searchType/{toSearch}")
-    public List<?> searchByType(@PathVariable String toSearch) {
-        return searchService.searchByType(toSearch);
+    @GetMapping(path = "/searchMilage/{milage}")
+    public List<String> searchByMilage(@PathVariable int milage) {
+        return searchService.searchByMilage(milage);
     }
 }
