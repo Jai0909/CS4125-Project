@@ -1,6 +1,7 @@
 package com.kiss.carrentalsystem.controller;
 
 import com.kiss.carrentalsystem.response.DefaultResponse;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,28 +30,72 @@ public class UserController {
             return ResponseEntity.ok(loginResponse);
         }
 
-        @PatchMapping(path = "/updateName/{email}")
+        @PatchMapping(
+                path = "/updateName/{email}",
+                consumes = {
+                        MediaType.APPLICATION_JSON_VALUE
+                },
+                produces = {
+                        MediaType.APPLICATION_JSON_VALUE
+                }
+        )
         public ResponseEntity<?> updateName(@RequestBody UserDTO userDTO, @PathVariable String email) {
             DefaultResponse userResponse = userService.updateName(userDTO, email);
-            return ResponseEntity.ok(userResponse);
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(userResponse);
         }
 
-        @PatchMapping(path = "/updatePhone/{email}")
+        @PatchMapping(
+                path = "/updatePhone/{email}",
+                consumes = {
+                        MediaType.APPLICATION_JSON_VALUE
+                },
+                produces = {
+                        MediaType.APPLICATION_JSON_VALUE
+                }
+        )
         public ResponseEntity<?> updatePhone(@RequestBody UserDTO userDTO, @PathVariable String email) {
             DefaultResponse userResponse = userService.updatePhone(userDTO, email);
-            return ResponseEntity.ok(userResponse);
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(userResponse);
         }
 
-        @PatchMapping(path = "/updateAddress/{email}")
+        @PatchMapping(
+                path = "/updateAddress/{email}",
+                consumes = {
+                     MediaType.APPLICATION_JSON_VALUE
+                },
+                produces = {
+                        MediaType.APPLICATION_JSON_VALUE
+                }
+        )
         public ResponseEntity<?> updateAddress(@RequestBody UserDTO userDTO, @PathVariable String email) {
             DefaultResponse userResponse = userService.updateAddress(userDTO, email);
-            return ResponseEntity.ok(userResponse);
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(userResponse);
         }
 
-        @PatchMapping(path = "/updatePassword/{email}")
+        @PatchMapping(
+                path = "/updatePassword/{email}",
+                consumes = {
+                        MediaType.APPLICATION_JSON_VALUE
+                },
+                produces = {
+                        MediaType.APPLICATION_JSON_VALUE
+                }
+        )
         public ResponseEntity<?> updatePassword(@RequestBody UserDTO userDTO, @PathVariable String email) {
             DefaultResponse userResponse = userService.updatePassword(userDTO, email);
-            return ResponseEntity.ok(userResponse);
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(userResponse);
         }
 
     }
