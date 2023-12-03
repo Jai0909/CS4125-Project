@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kiss.carrentalsystem.dto.BookingDTO;
 import com.kiss.carrentalsystem.response.DefaultResponse;
 import com.kiss.carrentalsystem.service.BookingService;
+import com.kiss.carrentalsystem.service.Impl.BasePDFGenerator;
+import com.kiss.carrentalsystem.service.PDFGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.logging.Logger;
@@ -14,6 +16,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -46,7 +49,12 @@ public class BookingControllerTest {
     @MockBean
     private BookingService bookingService;
 
+    @MockBean
+    private PDFGenerator decoratedPDFGenerator;
+
     private ObjectMapper objectMapper;
+
+    BasePDFGenerator basePDFGenerator = new BasePDFGenerator();
 
     @BeforeEach
     public void setUp() {

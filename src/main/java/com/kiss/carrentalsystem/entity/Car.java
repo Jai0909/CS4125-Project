@@ -29,22 +29,12 @@ public class Car {
     public Car() {
     }
 
-    public Car(String makeModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability) {
-        this.makeModel = makeModel;
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
     public Car(String makeAndModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability, int weight) {
         this(makeAndModel, licencePlate, milage, vehicleType, damaged, basePrice,availability);
         this.weight = weight;
     }
-    public Car(String makeAndModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability) {
-        this.makeAndModel = makeAndModel;
+    public Car(String makeModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability) {
+        this.makeModel = makeModel;
         this.licencePlate = licencePlate;
         this.milage = milage;
         this.vehicleType = vehicleType;
@@ -53,13 +43,20 @@ public class Car {
         this.availability = availability;
 
     }
-
     public String getMakeModel() {
         return makeModel;
     }
 
     public void setMakeModel(String makeModel) {
         this.makeModel = makeModel;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public String getLicencePlate() {

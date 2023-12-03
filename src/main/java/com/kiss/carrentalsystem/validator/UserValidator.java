@@ -1,14 +1,9 @@
 package com.kiss.carrentalsystem.validator;
 
-import com.kiss.carrentalsystem.repo.UserRepo;
-import org.apache.catalina.User;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserValidator {
-
-
     public boolean validateName(String name) {
         if (containsNumbers(name)) {
             return false;
