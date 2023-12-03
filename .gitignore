@@ -1,4 +1,3 @@
 .idea
 target
 src/main/resources/application.properties
-src/main/java/com/kiss/carrentalsystem/views/frontend-app

@@ -16,7 +16,7 @@ public class VanImpl implements CarService {
     public DefaultResponse addCar(CarDTO carDTO) {
         if(carDTO instanceof VanDTO) {
             VanDTO vanDTO = (VanDTO)carDTO; 
-            Car car1 = new Car(vanDTO.getMakeAndModel(),
+            Car car1 = new Car(vanDTO.getMakeModel(),
                     vanDTO.getLicencePlate(),
                     vanDTO.getMilage(),
                     vanDTO.getVehicleType(),

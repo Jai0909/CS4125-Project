@@ -6,6 +6,7 @@ import com.kiss.carrentalsystem.service.Impl.BasePDFGenerator;
 import com.kiss.carrentalsystem.service.Impl.ConfirmationPDFDecorator;
 import com.kiss.carrentalsystem.service.PDFGenerator;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -17,25 +18,16 @@ import java.util.Date;
 @Controller
 public class PDFExportController {
 
-    private final PDFGenerator pdfGeneratorService;
+    private final PDFGenerator decoratedPDFGenerator;
 
-    public PDFExportController(PDFGenerator pdfGeneratorService) {
-        this.pdfGeneratorService = pdfGeneratorService;
+    @Autowired
+    public PDFExportController(PDFGenerator decoratedPDFGenerator) {
+        this.decoratedPDFGenerator = decoratedPDFGenerator;
     }
 
     @GetMapping("/pdf/generate")
     public void generatePDF(HttpServletResponse response, BookingDTO bookingDTO) throws IOException {
-        response.setContentType("application/pdf");
-        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
-        String currentDateTime = dateFormatter.format(new Date());
-
-        String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
-        response.setHeader(headerKey, headerValue);
-
-        // Decorating the PDF generator with ConfirmationPDFDecorator
-        PDFGenerator decoratedPDFGenerator = new ConfirmationPDFDecorator(pdfGeneratorService);
-        decoratedPDFGenerator.generateBookingPDF(response, bookingDTO);
+        this.decoratedPDFGenerator.generateBookingPDF(response, bookingDTO);
     }
 }
 

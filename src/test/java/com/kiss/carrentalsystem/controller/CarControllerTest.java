@@ -1,7 +1,9 @@
 package com.kiss.carrentalsystem.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kiss.carrentalsystem.config.CarFactoryConfig;
 import com.kiss.carrentalsystem.dto.CarDTO;
+import com.kiss.carrentalsystem.factory.CarFactory;
 import com.kiss.carrentalsystem.response.DefaultResponse;
 import com.kiss.carrentalsystem.service.CarService;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +16,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -46,6 +49,9 @@ public class CarControllerTest {
     @MockBean
     private CarService carService;
 
+    @MockBean
+    private CarFactory carFactory;
+
     private ObjectMapper objectMapper;
 
     @BeforeEach
@@ -64,6 +70,7 @@ public class CarControllerTest {
         byte[] body = objectMapper.writeValueAsBytes(car);
         DefaultResponse defaultResponse = new DefaultResponse("good man", true);
 
+        when(carFactory.getCarService(any())).thenReturn(this.carService);
         when(this.carService.addCar(any())).thenReturn(defaultResponse);
         this.mockMvc.perform(
                         post("/car/addCar")
@@ -82,6 +89,7 @@ public class CarControllerTest {
         byte[] body = objectMapper.writeValueAsBytes(car);
         DefaultResponse defaultResponse = new DefaultResponse("good man", true);
 
+        when(carFactory.getCarService(any())).thenReturn(this.carService);
         when(this.carService.deleteCar(any())).thenReturn(defaultResponse);
         this.mockMvc.perform(
                         post("/car/deleteCar")
