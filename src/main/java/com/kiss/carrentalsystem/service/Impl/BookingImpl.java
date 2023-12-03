@@ -26,6 +26,7 @@ public class BookingImpl implements BookingService {
         bookingRepo.save(booking);
         return new DefaultResponse("Booking Created", true);
     }
+
     @Override
     public DefaultResponse cancelBooking(BookingDTO bookingDTO) {
         Booking booking = bookingRepo.findByBookingId(bookingDTO.getBookingId());
