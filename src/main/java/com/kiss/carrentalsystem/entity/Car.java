@@ -20,6 +20,8 @@ public class Car {
     private float basePrice;
     @Column(name="availability", length = 255)
     private boolean availability;
+    @Column(name="weight", length = 10)
+    private int weight;
 
     @OneToOne(mappedBy = "car")
     private Booking booking;
@@ -27,6 +29,10 @@ public class Car {
     public Car() {
     }
 
+    public Car(String makeAndModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability, int weight) {
+        this(makeAndModel, licencePlate, milage, vehicleType, damaged, basePrice,availability);
+        this.weight = weight;
+    }
     public Car(String makeModel, String licencePlate, int milage, String vehicleType, boolean damaged, float basePrice, boolean availability) {
         this.makeModel = makeModel;
         this.licencePlate = licencePlate;
@@ -35,14 +41,22 @@ public class Car {
         this.damaged = damaged;
         this.basePrice = basePrice;
         this.availability = availability;
-    }
 
+    }
     public String getMakeModel() {
         return makeModel;
     }
 
     public void setMakeModel(String makeModel) {
         this.makeModel = makeModel;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public String getLicencePlate() {
