@@ -59,8 +59,8 @@ public class BookingDTO {
         return bookingId;
     }
 
-    public void setBookingId(String booking_id) {
-        this.bookingId = booking_id;
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
     }
 
 }

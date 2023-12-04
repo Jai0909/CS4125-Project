@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Table(name="Payment") //todo check table name
 public class CardDetails {
     @Id
-    @Column(name="card_no", length = 16) //todo adjust names and lengths to fit
+    @Column(name="card_no", length = 16)
     private int cardNumber;
     @Column(name="card_holder", length = 255)
     private String cardHolder;

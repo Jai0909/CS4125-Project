@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.kiss.carrentalsystem.service.Impl.BasePDFGenerator;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @RestController
 @CrossOrigin
@@ -23,7 +24,9 @@ import java.io.IOException;
 public class BookingController {
     private final BookingService bookingService;
 
-        private final PDFGenerator decoratedPDFGenerator;
+    private static final Logger LOGGER = Logger.getLogger( BookingController.class.getName() );
+
+    private final PDFGenerator decoratedPDFGenerator;
 
     @Autowired
     public BookingController(BookingService bookingService, PDFGenerator decoratedPDFGenerator) {
@@ -40,6 +43,7 @@ public class BookingController {
                 this.decoratedPDFGenerator.generateBookingPDF(response, bookingDTO);
             } catch (IOException e) {
                 e.printStackTrace(); // Handle exception appropriately
+                LOGGER.log( Level.SEVERE, e.toString(), e );
             }
         }
           

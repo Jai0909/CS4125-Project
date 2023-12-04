@@ -19,10 +19,7 @@ public class UserValidator {
     }
 
     public boolean validatePassword(String password) {
-        if (!containsNumbers(password) || !containsCapitalLetters(password) || password.length() < 8) {
-            return false;
-        }
-        return true;
+        return (!containsNumbers(password) || !containsCapitalLetters(password) || password.length() < 8);
     }
 
     private static boolean containsNumbers(String input) {

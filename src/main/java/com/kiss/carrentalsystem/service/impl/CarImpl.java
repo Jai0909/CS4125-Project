@@ -1,34 +1,31 @@
-package com.kiss.carrentalsystem.service.Impl;
+package com.kiss.carrentalsystem.service.impl;
 
 import com.kiss.carrentalsystem.dto.CarDTO;
-import com.kiss.carrentalsystem.dto.VanDTO;
 import com.kiss.carrentalsystem.entity.Car;
 import com.kiss.carrentalsystem.repo.CarRepo;
 import com.kiss.carrentalsystem.response.DefaultResponse;
 import com.kiss.carrentalsystem.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class VanImpl implements CarService {
+@Service
+public class CarImpl implements CarService {
+
     @Autowired
     private CarRepo carRepo;
 
     @Override
     public DefaultResponse addCar(CarDTO carDTO) {
-        if(carDTO instanceof VanDTO) {
-            VanDTO vanDTO = (VanDTO)carDTO; 
-            Car car1 = new Car(vanDTO.getMakeModel(),
-                    vanDTO.getLicencePlate(),
-                    vanDTO.getMilage(),
-                    vanDTO.getVehicleType(),
-                    vanDTO.isDamaged(),
-                    vanDTO.getBasePrice(),
-                    vanDTO.isAvailability(),
-                    vanDTO.getWeight()
-            );
-            carRepo.save(car1);
-        }
-
-        return new DefaultResponse("Van added Successfully", true);
+        Car car1 = new Car(carDTO.getMakeModel(),
+                carDTO.getLicencePlate(),
+                carDTO.getMilage(),
+                carDTO.getVehicleType(),
+                carDTO.isDamaged(),
+                carDTO.getBasePrice(),
+                carDTO.isAvailability()
+        );
+        carRepo.save(car1);
+        return new DefaultResponse("Car added Successfully", true);
     }
 
     @Override
@@ -41,5 +38,4 @@ public class VanImpl implements CarService {
             return new DefaultResponse("Car was not deleted", false);
         }
     }
-
 }

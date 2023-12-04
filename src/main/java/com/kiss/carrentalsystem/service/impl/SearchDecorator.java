@@ -1,8 +1,4 @@
-package com.kiss.carrentalsystem.service.Impl;
-
-import com.kiss.carrentalsystem.service.Impl.BaseSearchImpl;
-
-import java.util.List;
+package com.kiss.carrentalsystem.service.impl;
 
 public abstract class SearchDecorator extends BaseSearchImpl {
 
