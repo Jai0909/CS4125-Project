@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("user")
+@RequestMapping("search")
 public class SearchController {
 
     private final BaseSearchImpl searchService;
