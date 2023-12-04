@@ -1,4 +1,4 @@
-package com.kiss.carrentalsystem.service.Impl;
+package com.kiss.carrentalsystem.service.impl;
 
 import com.kiss.carrentalsystem.entity.Car;
 import com.kiss.carrentalsystem.repo.CarRepo;
@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SearchByTypeDecorator implements SearchService {
+public class SearchByMileageDecorator implements SearchService {
 
     private final SearchService baseSearchService;
     private CarRepo carRepo;
 
     @Autowired
-    public SearchByTypeDecorator(BaseSearchImpl baseSearchService) {
+    public SearchByMileageDecorator(BaseSearchImpl baseSearchService) {
         this.baseSearchService = baseSearchService;
     }
 
@@ -27,13 +27,13 @@ public class SearchByTypeDecorator implements SearchService {
 
     @Override
     public List<String> searchByType(String toSearch) {
-        List<Car> cars = carRepo.findByVehicleType(toSearch);
-        return extractLicensePlates(cars);
+        return baseSearchService.searchByType(toSearch);
     }
 
     @Override
     public List<String> searchByMilage(int milage) {
-        return baseSearchService.searchByMilage(milage);
+        List<Car> cars = carRepo.findByMilageGreaterThan(milage);
+        return extractLicensePlates(cars);
     }
 
     private List<String> extractLicensePlates(List<Car> cars) {

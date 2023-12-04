@@ -1,6 +1,6 @@
 package com.kiss.carrentalsystem.controller;
 
-import com.kiss.carrentalsystem.service.Impl.BaseSearchImpl;
+import com.kiss.carrentalsystem.service.impl.BaseSearchImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

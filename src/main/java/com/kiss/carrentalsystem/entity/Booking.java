@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="Booking") //todo check table name
+@Table(name="Booking")
 public class Booking {
 
     @Id

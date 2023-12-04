@@ -1,8 +1,8 @@
 package com.kiss.carrentalsystem.factory;
 
 import com.kiss.carrentalsystem.service.CarService;
-import com.kiss.carrentalsystem.service.Impl.CarImpl;
-import com.kiss.carrentalsystem.service.Impl.VanImpl;
+import com.kiss.carrentalsystem.service.impl.CarImpl;
+import com.kiss.carrentalsystem.service.impl.VanImpl;
 
 public class CarFactory {
     public CarService getCarService(String vehicleType){

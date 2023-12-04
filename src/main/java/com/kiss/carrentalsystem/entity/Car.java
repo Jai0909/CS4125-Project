@@ -2,10 +2,10 @@ package com.kiss.carrentalsystem.entity;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name="Car") //todo check table name
+@Table(name="Car")
 public class Car {
 
-    @Column(name="makeModel", length = 255) //todo adjust names and lengths to fit
+    @Column(name="makeModel", length = 255)
     private String makeModel;
     @Id
     @Column(name="reg_no", length = 255)
