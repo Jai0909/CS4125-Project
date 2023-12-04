@@ -13,4 +13,6 @@ public interface UserService {
 
     DefaultResponse updatePassword(UserDTO userDTO, String email);
 
+    DefaultResponse addBalance(UserDTO userDTO, String email);
+    DefaultResponse removeBalance(UserDTO userDTO, String email);
 }
