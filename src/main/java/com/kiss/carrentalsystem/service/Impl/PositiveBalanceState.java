@@ -28,6 +28,7 @@ public class PositiveBalanceState implements PaymentState {
         } else {
             if (user.getBalance() < 0) { //todo each time it is called the state resets.
                 user.setState(new NegativeBalanceState());
+                user.setStateString("negative");
             }
             return new DefaultResponse("Money was not removed from Balance, insufficient funds", false);
         }

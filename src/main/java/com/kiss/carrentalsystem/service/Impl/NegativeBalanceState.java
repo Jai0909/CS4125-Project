@@ -20,6 +20,7 @@ public class NegativeBalanceState implements PaymentState {
             // change to positive balance state if balance becomes positive
             if (user.getBalance() >= 0) {
                 user.setState(new PositiveBalanceState());
+                user.setStateString("positive");
             }
             return new DefaultResponse("Money added to Balance successfully", true);
     }
