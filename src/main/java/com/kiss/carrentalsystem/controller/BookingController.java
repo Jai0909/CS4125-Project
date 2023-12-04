@@ -38,14 +38,13 @@ public class BookingController {
         public ResponseEntity<DefaultResponse> addBooking(@RequestBody BookingDTO bookingDTO, HttpServletResponse response)
     {
         DefaultResponse defaultResponse = bookingService.addBooking(bookingDTO);
-        if (defaultResponse.isSuccess()) {
-            try {
+
+        try {
                 this.decoratedPDFGenerator.generateBookingPDF(response, bookingDTO);
             } catch (IOException e) {
                 e.printStackTrace(); // Handle exception appropriately
                 LOGGER.log( Level.SEVERE, e.toString(), e );
             }
-        }
           
         return ResponseEntity.ok(defaultResponse);
     }

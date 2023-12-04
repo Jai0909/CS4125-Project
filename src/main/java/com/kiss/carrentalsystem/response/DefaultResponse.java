@@ -25,7 +25,4 @@ public class DefaultResponse {
     public void setStatus(Boolean status) {
         this.status = status;
     }
-
-    public boolean isSuccess() {
-    return true;}
 }
