@@ -46,16 +46,27 @@ public class UserController {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(userResponse);
         }
+    @PatchMapping(path = "/addBalance/{email}")
+    public ResponseEntity<?> addBalance(@RequestBody UserDTO userDTO, @PathVariable String email) {
+        DefaultResponse userResponse = userService.addBalance(userDTO, email);
+        return ResponseEntity.ok(userResponse);
+    }
 
-        @PatchMapping(
-                path = "/updatePhone/{email}",
-                consumes = {
-                        MediaType.APPLICATION_JSON_VALUE
-                },
-                produces = {
-                        MediaType.APPLICATION_JSON_VALUE
-                }
-        )
+    @PatchMapping(path = "/removeBalance/{email}")
+    public ResponseEntity<?> removeBalance(@RequestBody UserDTO userDTO, @PathVariable String email) {
+        DefaultResponse userResponse = userService.removeBalance(userDTO, email);
+        return ResponseEntity.ok(userResponse);
+    }
+
+    @PatchMapping(
+            path = "/updatePhone/{email}",
+            consumes = {
+                    MediaType.APPLICATION_JSON_VALUE
+            },
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE
+            }
+    )
         public ResponseEntity<?> updatePhone(@RequestBody UserDTO userDTO, @PathVariable String email) {
             DefaultResponse userResponse = userService.updatePhone(userDTO, email);
             return ResponseEntity

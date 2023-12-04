@@ -1,5 +1,9 @@
 package com.kiss.carrentalsystem.entity;
 
+import com.kiss.carrentalsystem.response.DefaultResponse;
+import com.kiss.carrentalsystem.service.Impl.NegativeBalanceState;
+import com.kiss.carrentalsystem.service.Impl.PositiveBalanceState;
+import com.kiss.carrentalsystem.service.PaymentState;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -23,15 +27,17 @@ public class User {
     private int userMilage;
     @Column(name="date_of_birth")
     private String dateOfBirth;
-
     @OneToMany(mappedBy = "user")
     private List<Booking> bookings;
-    
     @Column(name="is_admin")
     private boolean isAdmin;
-
     @Column(name="balance")
     private float balance;
+    @Transient // speciefies that it shouldnt be in db
+    private PaymentState state;
+
+    @Column(name="state")
+    private String stateString;
 
     public User(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth, boolean isAdmin, float balance) {
         this.email = email;
@@ -43,6 +49,12 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.isAdmin = isAdmin;
         this.balance = balance;
+        if (stateString == null || stateString.equals("positive")) {
+            this.state = new PositiveBalanceState();
+            stateString = "positive";
+        } else {
+            this.state = new NegativeBalanceState();
+        }
     }
 
     public User(String email, String name, String password, String phoneNo, String address, int userMilage, String dateOfBirth) {
@@ -53,6 +65,12 @@ public class User {
         this.address = address;
         this.userMilage = userMilage;
         this.dateOfBirth = dateOfBirth;
+        if (stateString.equals(null) || stateString.equals("positive")) {
+            this.state = new PositiveBalanceState();
+            stateString = "positive";
+        } else {
+            this.state = new NegativeBalanceState();
+        }
     }
 
     public User() {
@@ -121,7 +139,28 @@ public class User {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
-        public boolean isAdmin() {
+
+    public DefaultResponse addBalance(double amount) {
+        if (stateString == null || stateString.equals("positive")) {
+            this.state = new PositiveBalanceState();
+            stateString = "positive";
+        } else {
+            this.state = new NegativeBalanceState();
+        }
+        return state.addBalance(this, amount);
+    }
+
+    public DefaultResponse removeBalance(double amount) {
+        if (stateString == null || stateString.equals("positive")) {
+            this.state = new PositiveBalanceState();
+            stateString = "positive";
+        } else {
+            this.state = new NegativeBalanceState();
+        }
+        return state.removeBalance(this, amount);
+    }
+
+    public boolean isAdmin() {
         return isAdmin;
     }
 
@@ -135,6 +174,18 @@ public class User {
 
     public void setBalance(float balance) {
         this.balance = balance;
+    }
+
+    public void setState(PaymentState state) {
+        this.state = state;
+    }
+
+    public String getStateString() {
+        return stateString;
+    }
+
+    public void setStateString(String stateString) {
+        this.stateString = stateString;
     }
 }
 
