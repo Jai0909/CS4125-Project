@@ -133,5 +133,47 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$.message").value("good man"))
                 .andExpect(jsonPath("$.status").value(true));
     }
+
+    @Test
+    public void testAddBalance() throws Exception {
+        UserDTO user = new UserDTO();
+        user.setName("test addBalance");
+
+        byte[] body = objectMapper.writeValueAsBytes(user);
+        DefaultResponse defaultResponse = new DefaultResponse("Success", true);
+
+        when(this.userService.addBalance(any(), eq("test@sample.com"))).thenReturn(defaultResponse);
+        this.mockMvc.perform(
+                        patch("/user/addBalance/test@sample.com")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .content(body))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.message").value("Success"))
+                .andExpect(jsonPath("$.status").value(true));
+    }
+
+    @Test
+    public void testRemoveBalance() throws Exception {
+        UserDTO user = new UserDTO();
+        user.setName("test removeBalance");
+
+        byte[] body = objectMapper.writeValueAsBytes(user);
+        DefaultResponse defaultResponse = new DefaultResponse("Success", true);
+
+        when(this.userService.removeBalance(any(), eq("test@sample.com"))).thenReturn(defaultResponse);
+        this.mockMvc.perform(
+                        patch("/user/removeBalance/test@sample.com")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .content(body))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.message").value("Success"))
+                .andExpect(jsonPath("$.status").value(true));
+    }
 }
 
