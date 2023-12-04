@@ -51,7 +51,7 @@ public class BasePDFGenerator implements PDFGenerator {
         table.setHorizontalAlignment(Element.ALIGN_CENTER);
 
         addTableHeader(table, fontHeading, "Parameter", "Details");
-        addRow(table, "Car", bookingDTO.getCar().getMakeModel());
+        addRow(table, "Car", bookingDTO.getCar().getLicencePlate());
         addRow(table, "User", bookingDTO.getUser().getName());
         addRow(table, "Booking ID", bookingDTO.getBookingId());
         addRow(table, "Start Date", bookingDTO.getBookingStartDate().toString());

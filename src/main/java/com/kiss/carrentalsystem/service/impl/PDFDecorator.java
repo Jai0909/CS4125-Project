@@ -15,7 +15,7 @@ public abstract class PDFDecorator implements PDFGenerator {
 
     @Override
     public void generateBookingPDF(HttpServletResponse response, BookingDTO bookingDTO) throws IOException {
-        pdfGenerator.generateBookingPDF(response, bookingDTO); // Delegating to wrapped generator
+        pdfGenerator.generateBookingPDF(response, bookingDTO);
     }
 }
 
