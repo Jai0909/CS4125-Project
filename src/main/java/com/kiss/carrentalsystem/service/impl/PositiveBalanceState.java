@@ -1,13 +1,8 @@
-package com.kiss.carrentalsystem.service.Impl;
+package com.kiss.carrentalsystem.service.impl;
 
-import com.kiss.carrentalsystem.dto.CardDetailsDTO;
-import com.kiss.carrentalsystem.entity.CardDetails;
 import com.kiss.carrentalsystem.response.DefaultResponse;
-import com.kiss.carrentalsystem.service.CardDetailsService;
 import com.kiss.carrentalsystem.service.PaymentState;
 import com.kiss.carrentalsystem.entity.User;
-import com.kiss.carrentalsystem.repo.CardDetailsRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

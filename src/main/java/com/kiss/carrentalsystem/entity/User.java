@@ -1,8 +1,8 @@
 package com.kiss.carrentalsystem.entity;
 
 import com.kiss.carrentalsystem.response.DefaultResponse;
-import com.kiss.carrentalsystem.service.Impl.NegativeBalanceState;
-import com.kiss.carrentalsystem.service.Impl.PositiveBalanceState;
+import com.kiss.carrentalsystem.service.impl.NegativeBalanceState;
+import com.kiss.carrentalsystem.service.impl.PositiveBalanceState;
 import com.kiss.carrentalsystem.service.PaymentState;
 import jakarta.persistence.*;
 
