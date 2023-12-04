@@ -17,25 +17,29 @@ public class SearchByMileageDecorator implements SearchService {
 
     @Autowired
     public SearchByMileageDecorator(BaseSearchImpl baseSearchService) {
-        this.baseSearchService = baseSearchService;
+        this.baseSearchService = baseSearchService; // This injects the base SearchService
     }
 
+    // This delegates the search make/model to the base SearchService
     @Override
     public List<String> searchByMakeModel(String toSearch) {
         return baseSearchService.searchByMakeModel(toSearch);
     }
 
+    // This would delegate search by type to the base SearchService
     @Override
     public List<String> searchByType(String toSearch) {
         return baseSearchService.searchByType(toSearch);
     }
 
+    // This is the Custom search by mileage greater than the value specified
     @Override
     public List<String> searchByMilage(int milage) {
         List<Car> cars = carRepo.findByMilageGreaterThan(milage);
         return extractLicensePlates(cars);
     }
 
+    // This is the Utility method to extract the license plates from the list of cars
     private List<String> extractLicensePlates(List<Car> cars) {
         List<String> result = new ArrayList<>();
         if (cars != null) {

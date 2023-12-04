@@ -14,8 +14,10 @@ public class CarImpl implements CarService {
     @Autowired
     private CarRepo carRepo;
 
+    // This is the method to add a new car
     @Override
     public DefaultResponse addCar(CarDTO carDTO) {
+        // This creates a new Car entity from the CarDTO
         Car car1 = new Car(carDTO.getMakeModel(),
                 carDTO.getLicencePlate(),
                 carDTO.getMilage(),
@@ -24,10 +26,12 @@ public class CarImpl implements CarService {
                 carDTO.getBasePrice(),
                 carDTO.isAvailability()
         );
+        // This saves the car in the database using the CarRepo
         carRepo.save(car1);
         return new DefaultResponse("Car added Successfully", true);
     }
 
+    // This is the method to delete a car
     @Override
     public DefaultResponse deleteCar(CarDTO carDTO) {
         Car car2 = carRepo.findByLicencePlate(carDTO.getLicencePlate());

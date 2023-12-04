@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kiss.carrentalsystem.dto.BookingDTO;
 import com.kiss.carrentalsystem.response.DefaultResponse;
 import com.kiss.carrentalsystem.service.BookingService;
-import com.kiss.carrentalsystem.service.impl.BasePDFGenerator;
-import com.kiss.carrentalsystem.service.PDFGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.logging.Logger;

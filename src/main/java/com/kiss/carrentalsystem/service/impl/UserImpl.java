@@ -17,6 +17,7 @@ public class UserImpl implements UserService {
     private UserRepo userRepo;
     @Override
     public DefaultResponse addUser(UserDTO userDTO) {
+        // This will create a new User entity from the UserDTO and it will be saved in the Database
         User user = new User(
                 userDTO.getEmail(),
                 userDTO.getName(),
@@ -33,11 +34,13 @@ public class UserImpl implements UserService {
     }
     @Override
     public DefaultResponse loginUser(LoginDTO loginDTO) {
+        // This is to find the user by email in the database
         User user1 = userRepo.findByEmail(loginDTO.getEmail());
         if (user1 != null) {
             String password = loginDTO.getPassword();
             String encodedPassword = user1.getPassword();
               if (password.equals(user1.getPassword())) {
+                  // This checks if user with email and password exists
                 Optional<User> user = userRepo.findOneByEmailAndPassword(loginDTO.getEmail(), encodedPassword);
                 if (user.isPresent()) {
                     return new DefaultResponse("Login Success", true);

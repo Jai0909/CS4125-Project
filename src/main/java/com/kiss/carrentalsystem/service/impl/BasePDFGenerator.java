@@ -19,6 +19,7 @@ import java.util.Date;
 @Service
 public class BasePDFGenerator implements PDFGenerator {
 
+    // This is the method that generates the PDF receipt containing the booking details
     @Override
     public void generateBookingPDF(HttpServletResponse response, BookingDTO bookingDTO) throws IOException {
 
@@ -35,6 +36,7 @@ public class BasePDFGenerator implements PDFGenerator {
         PdfWriter.getInstance(document, response.getOutputStream());
 
         document.open();
+        // Creation and Formatting of the PDF Document
         Font fontTitle = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         fontTitle.setSize(18);
 
@@ -60,19 +62,20 @@ public class BasePDFGenerator implements PDFGenerator {
         document.add(title);
         document.add(table);
 
-        // Confirmation statement
+        // This prints the Confirmation statement in the Generated Receipt
         Font fontConfirmation = FontFactory.getFont(FontFactory.HELVETICA_OBLIQUE);
         fontConfirmation.setSize(12);
 
         Paragraph confirmation = new Paragraph("Booking has been confirmed.", fontConfirmation);
         confirmation.setAlignment(Paragraph.ALIGN_CENTER);
-        confirmation.setSpacingBefore(20); // Add space before confirmation
+        confirmation.setSpacingBefore(20);
 
         document.add(confirmation);
 
         document.close();
     }
 
+    // Helper methods for table headers and rows
     private void addTableHeader(PdfPTable table, Font font, String... headers) {
         for (String header : headers) {
             PdfPCell cell = new PdfPCell(new Phrase(header, font));

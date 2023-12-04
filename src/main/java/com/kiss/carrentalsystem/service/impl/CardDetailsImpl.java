@@ -13,8 +13,11 @@ public class CardDetailsImpl implements CardDetailsService {
 
     @Autowired
     private CardDetailsRepo cardDetailsRepo;
+
+    // This is the method to add new Card Details
     @Override
     public DefaultResponse addCard(CardDetailsDTO cardDetailsDTO) {
+        // This creates a new CardDetails entity from the CardDetailsDTO
         CardDetails cardDetails = new CardDetails(
                 cardDetailsDTO.getCardNumber(),
                 cardDetailsDTO.getCardHolder(),
@@ -22,9 +25,12 @@ public class CardDetailsImpl implements CardDetailsService {
                 cardDetailsDTO.getExpirationYear(),
                 cardDetailsDTO.getCvc()
         );
+        // This saves the card details to the database using the CardDetailsRepo
         cardDetailsRepo.save(cardDetails);
         return new DefaultResponse("Card added Successfully", true);
     }
+
+    // This is the method to delete card details
     @Override
     public DefaultResponse deleteCard(CardDetailsDTO cardDetailsDTO) {
         CardDetails cardDetails2 = cardDetailsRepo.findByCardNumber(cardDetailsDTO.getCardNumber());

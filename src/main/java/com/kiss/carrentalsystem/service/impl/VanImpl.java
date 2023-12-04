@@ -14,8 +14,11 @@ public class VanImpl implements CarService {
 
     @Override
     public DefaultResponse addCar(CarDTO carDTO) {
+        // This is to check if the given CarDTO is an instance of VanDTO (this is specifically for vans)
         if(carDTO instanceof VanDTO) {
-            VanDTO vanDTO = (VanDTO)carDTO; 
+            // This will convert the CarDTO to VanDTO
+            VanDTO vanDTO = (VanDTO)carDTO;
+            // This will create a new Car entity from the VanDTO that will be saved to the Database
             Car car1 = new Car(vanDTO.getMakeModel(),
                     vanDTO.getLicencePlate(),
                     vanDTO.getMilage(),
@@ -33,9 +36,10 @@ public class VanImpl implements CarService {
 
     @Override
     public DefaultResponse deleteCar(CarDTO carDTO) {
+        // This will find the car by license plate
         Car car2 = carRepo.findByLicencePlate(carDTO.getLicencePlate());
         if (car2 != null) {
-            carRepo.delete(car2);
+            carRepo.delete(car2); // This will delete the car from the Databse
             return new DefaultResponse("Car deleted Successfully", true);
         } else {
             return new DefaultResponse("Car was not deleted", false);
