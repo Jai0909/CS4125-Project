@@ -17,12 +17,14 @@ import java.util.Date;
 @Controller
 public class PDFExportController {
 
+    // This is the constructor injection of the PDFGenerator service
     private final PDFGenerator pdfGeneratorService;
 
     public PDFExportController(PDFGenerator pdfGeneratorService) {
         this.pdfGeneratorService = pdfGeneratorService;
     }
 
+    // This Handler method generates the Receipt PDF containg the booking details
     @GetMapping("/pdf/generate")
     public void generatePDF(HttpServletResponse response, BookingDTO bookingDTO) throws IOException {
         response.setContentType("application/pdf");
@@ -33,7 +35,7 @@ public class PDFExportController {
         String headerValue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        // Decorating the PDF generator with ConfirmationPDFDecorator
+        // The decorator is created that adds confirmation statement of the booking to the generated Receipt PDF
         PDFGenerator decoratedPDFGenerator = new ConfirmationPDFDecorator(pdfGeneratorService);
         decoratedPDFGenerator.generateBookingPDF(response, bookingDTO);
     }

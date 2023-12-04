@@ -16,15 +16,16 @@ import java.io.IOException;
 public class ConfirmationPDFDecorator extends PDFDecorator {
 
     public ConfirmationPDFDecorator(PDFGenerator pdfGenerator) {
-        super(pdfGenerator);
+        super(pdfGenerator); // The constructor of the parent class (PDFDecorator) is called with the provided PDFGenerator
     }
 
     @Override
     public void generateBookingPDF(HttpServletResponse response, BookingDTO bookingDTO) throws IOException {
-        super.generateBookingPDF(response, bookingDTO); // Call the base generator
+        super.generateBookingPDF(response, bookingDTO);
         addConfirmationStatement(response);
     }
 
+    // This method adds the confirmation statement to the receipt
     private void addConfirmationStatement(HttpServletResponse response) throws IOException {
         Document document = new Document();
         PdfWriter.getInstance(document, response.getOutputStream());
